@@ -5,48 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Schachclub SV Dettingen/Erms Jugend</title>
     <link rel="stylesheet" href="assets/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   </head>
   <body>
     <header>
-      <!-- Logo als Bild einfügen -->
-      <img src="assets/logo.png" alt="Schachclub Dettingen/Erms Logo" class="logo" />
-      <h1>Willkommen bei der Jugendabteilung des SV Dettingen/Erms e.V.</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Startseite</a></li>
-          <li><a href="training.html">Training</a></li>
-          <li><a href="ueber_uns.html">Über Uns</a></li>
-          <li><a href="kontakt.html">Kontakt</a></li>
-        </ul>
-      </nav>
+      <div class="container header-content">
+        <img src="assets/logo.png" alt="Schachclub Dettingen/Erms Logo" class="logo" />
+        <div class="header-text">
+            <h1>Willkommen bei der Jugendabteilung</h1>
+            <p class="subtitle">des SV Dettingen/Erms e.V.</p>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html" class="active">Startseite</a></li>
+            <li><a href="training.html">Training</a></li>
+            <li><a href="ueber_uns.html">Über Uns</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
+
     <main>
-        <p>Schön, dass du hier bist! Auf dieser Seite findest du alle Informationen rund um unsere Jugendabteilung im Schach.</p>
-        
-        <section id="about-us-intro">
-            <h2>Über uns</h2>
-            <p>Wir sind die junge Garde des SV Dettingen/Erms und teilen die Begeisterung für das königliche Spiel. Bei uns kannst du Schach von Grund auf lernen oder deine Fähigkeiten verbessern, neue Freunde finden und an spannenden Wettkämpfen teilnehmen.</p>
+      <div class="container">
+        <section class="hero-intro">
+          <h2>Schön, dass du hier bist!</h2>
+          <p>
+            Entdecke die Welt des Schachs mit uns. Auf dieser Seite findest du alle
+            Informationen rund um unsere Jugendabteilung.
+          </p>
         </section>
-        
-        <section id="what-we-offer">
-            <h2>Was wir bieten</h2>
-            <ul>
+
+        <div class="features-grid">
+            <section id="about-us-intro" class="feature-card">
+                <img src="https://placehold.co/100x100/a6292d/ffffff?text=♔" alt="Über Uns Icon" class="feature-icon">
+                <h3>Über uns</h3>
+                <p>
+                Wir sind die junge Garde des SV Dettingen/Erms und teilen die
+                Begeisterung für das königliche Spiel. Bei uns kannst du Schach
+                von Grund auf lernen oder deine Fähigkeiten verbessern, neue Freunde
+                finden und an spannenden Wettkämpfen teilnehmen.
+                </p>
+                <a href="ueber_uns.html" class="btn btn-secondary">Mehr erfahren</a>
+            </section>
+
+            <section id="what-we-offer" class="feature-card">
+                <img src="https://placehold.co/100x100/fddc61/333333?text=★" alt="Angebot Icon" class="feature-icon">
+                <h3>Was wir bieten</h3>
+                <ul>
                 <li>Regelmäßiges Schachtraining für Anfänger und Fortgeschrittene</li>
                 <li>Teilnahme an Turnieren und Meisterschaften</li>
                 <li>Eine tolle Gemeinschaft und viel Spaß am Spiel</li>
                 <li>Förderung von Konzentration und strategischem Denken</li>
-            </ul>
+                </ul>
+                <a href="training.html" class="btn btn-secondary">Zum Training</a>
+            </section>
+        </div>
+
+        <section class="cta-section fade-in">
+          <h2>Bereit für den nächsten Zug?</h2>
+          <p>
+            Werde Teil unserer Schachfamilie und entdecke dein Potenzial!
+          </p>
+          <button id="animateButton" class="btn btn-primary">Klicke mich!</button>
+          <!-- Das "Unser Schachbrett" ist hier thematisch besser platziert -->
+          <div class="chessboard-placeholder">
+            <p>Hier könnte eine interaktive Schach-Demo oder ein aktuelles Puzzle sein!</p>
+          </div>
         </section>
-        <button id="animateButton">Klicke mich!</button>
+      </div>
     </main>
 
-    <section class="fade-in">
-      <h2>Unser Schachbrett</h2>
-      <!-- Schachbrett-Inhalte hier einfügen -->
-    </section>
-
     <footer>
-      <p>&copy; 2025 Schachclub SV Dettingen/Erms Jugend</p>
+      <div class="container">
+        <p>© <span id="currentYear"></span> Schachclub SV Dettingen/Erms Jugend</p>
+      </div>
     </footer>
     <script src="assets/script.js" defer></script>
   </body>
