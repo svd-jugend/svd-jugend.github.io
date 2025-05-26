@@ -1,84 +1,143 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog - SV Dettingen/Erms Jugend</title>
-    <meta name="description" content="Aktuelle Nachrichten, Berichte und Ankündigungen der Schachjugend des SV Dettingen/Erms e.V.">
-    <link rel="stylesheet" href="assets/styles.css" />
+    <title>
+      Großer Erfolg beim Jugendturnier in Musterstadt - SV Dettingen/Erms Jugend
+    </title>
+    <meta
+      name="description"
+      content="Bericht über die Teilnahme und Erfolge unserer Jugendmannschaft beim Schachturnier in Musterstadt."
+    />
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <!-- KORRIGIERT -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <div class="header-top-row">
-                <img src="assets/logo.png" alt="Schachclub Dettingen/Erms Logo" class="logo-image" />
-                <div class="welcome-text">
-                    <h1>Willkommen bei der Jugendabteilung</h1>
-                    <p class="subtitle">des SV Dettingen/Erms e.V.</p>
-                </div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Startseite</a></li>
-                    <li><a href="training.html">Training</a></li>
-                    <li><a href="ueber_uns.html">Über Uns</a></li>
-                    <li><a href="blog.html" class="active">Blog</a></li>
-                    <li><a href="kontakt.html">Kontakt</a></li>
-                </ul>
-            </nav>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header-custom">
+      <div class="container header-custom-content">
+        <div class="logo-container-custom">
+          <img
+            src="assets/logo.png"
+            alt="Schachclub Dettingen/Erms Logo"
+            class="logo-custom"
+          />
         </div>
+        <div class="header-main-content-custom">
+          <div class="welcome-text-block-custom">
+            <!-- Neuer Wrapper für H1 und P -->
+            <h1>Willkommen bei der Jugendabteilung</h1>
+            <p class="subtitle-custom">des SV Dettingen/Erms e.V.</p>
+          </div>
+          <nav class="navigation-custom">
+            <ul>
+              <li><a href="index.html" class="active">Startseite</a></li>
+              <li><a href="training.html">Training</a></li>
+              <li><a href="ueber_uns.html">Über Uns</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
     </header>
 
     <main>
-        <div class="container">
-            <h1>Unser Blog</h1>
+      <div class="container">
+        <article class="blog-post-full">
+          <header class="blog-post-header">
+            <h1>Großer Erfolg beim Jugendturnier in Musterstadt</h1>
+            <p class="blog-post-meta">
+              Veröffentlicht am
+              <time datetime="2024-03-15">15. März 2024</time> von Max
+              Mustermann
+            </p>
+          </header>
 
-            <section class="blog-posts-list">
-                <!-- Beispiel für einen Blog-Beitrag -->
-                <article class="blog-post-preview">
-                    <img src="https://placehold.co/800x400/a6292d/ffffff?text=Schach_Turnier" alt="Vorschaubild Turnierbericht" class="blog-post-image">
-                    <div class="blog-post-content">
-                        <h2><a href="beiträge/blog-beitrag-1.html">Großer Erfolg beim Jugendturnier in Musterstadt</a></h2>
-                        <p class="blog-post-meta">
-                            Veröffentlicht am <time datetime="2024-03-15">15. März 2024</time> von Max Mustermann
-                        </p>
-                        <p>
-                            Unsere Jugendmannschaft hat am vergangenen Wochenende beim Turnier in Musterstadt hervorragend abgeschnitten. Hier ein kurzer Bericht über die spannenden Partien und tollen Ergebnisse...
-                        </p>
-                        <a href="beiträge/blog-beitrag-1.html" class="btn btn-primary">Weiterlesen »</a>
-                    </div>
-                </article>
+          <!-- Bildpfade innerhalb des Beitrags müssten ggf. auch angepasst werden, -->
+          <!-- je nachdem, wo du die Bilder für Blog-Posts ablegst. -->
+          <!-- Annahme: Bilder sind auch im globalen assets/images Ordner -->
+          <img
+            src="../assets/images/schach_turnier_bericht_gross.jpg"
+            alt="Bild vom Schachturnier in Musterstadt"
+            class="blog-post-full-image"
+          />
+          <!-- oder wenn Bilder im Blog-Ordner sind: <img src="images/schach_turnier_bericht_gross.jpg" ...> -->
 
-                <!-- Weiterer Beispiel-Blog-Beitrag -->
-                <article class="blog-post-preview">
-                    <img src="https://placehold.co/800x400/fddc61/333333?text=Training_Tipps" alt="Vorschaubild Trainingstipps" class="blog-post-image">
-                    <div class="blog-post-content">
-                        <h2><a href="beiträge/blog-beitrag-2.html">Neue Trainingstipps: Eröffnungen meistern</a></h2>
-                        <p class="blog-post-meta">
-                            Veröffentlicht am <time datetime="2024-03-01">1. März 2024</time> von Schach-Trainer
-                        </p>
-                        <p>
-                            In dieser Woche möchten wir euch einige grundlegende Tipps zur Verbesserung eurer Eröffnungsstrategien geben. Eine gute Eröffnung kann oft den Grundstein für den Sieg legen...
-                        </p>
-                        <a href="beiträge/blog-beitrag-2.html" class="btn btn-primary">Weiterlesen »</a>
-                    </div>
-                </article>
+          <div class="blog-post-body">
+            <p>
+              Unsere Jugendmannschaft hat am vergangenen Wochenende beim
+              renommierten Jugend-Schachturnier in Musterstadt teilgenommen und
+              dabei beeindruckende Ergebnisse erzielt. Mit viel Engagement,
+              Konzentration und strategischem Geschick konnten unsere jungen
+              Talente in mehreren Altersklassen überzeugen.
+            </p>
 
-                <p class="no-more-posts" style="text-align:center; margin-top: 2rem; color: var(--color-accent);">
-                    <em>Weitere Beiträge folgen bald!</em>
-                </p>
-            </section>
-        </div>
+            <h2>Spannende Partien und tolle Platzierungen</h2>
+            <p>
+              Besonders hervorzuheben ist die Leistung von [Name Spieler/in 1],
+              der/die in der Altersklasse U12 den ersten Platz belegte und sich
+              souverän gegen starke Konkurrenz durchsetzte. Auch [Name
+              Spieler/in 2] zeigte in der U14 eine fantastische Leistung und
+              erreichte einen hervorragenden dritten Platz.
+            </p>
+            <p>
+              Die Atmosphäre während des Turniers war großartig. Unsere
+              Spielerinnen und Spieler unterstützten sich gegenseitig und
+              zeigten echten Teamgeist. Es war schön zu sehen, wie viel Spaß
+              alle am königlichen Spiel hatten und wie sie von Partie zu Partie
+              dazulernten.
+            </p>
+
+            <figure>
+              <img
+                src="../assets/images/teamfoto_jugend.jpg"
+                alt="Teamfoto der Jugendmannschaft"
+              />
+              <figcaption>
+                Unsere erfolgreiche Jugendmannschaft in Musterstadt.
+              </figcaption>
+            </figure>
+
+            <h2>Ein Blick nach vorn</h2>
+            <p>
+              Diese Erfolge sind ein toller Ansporn für die kommenden
+              Herausforderungen. Wir sind stolz auf unsere Jugend und freuen uns
+              auf viele weitere spannende Turniere und Schach-Events. Ein großer
+              Dank gilt auch den Eltern und Betreuern, die unsere jungen
+              Schachspielerinnen und -spieler tatkräftig unterstützt haben.
+            </p>
+            <p>
+              Wer Interesse hat, selbst Teil unserer Schachjugend zu werden, ist
+              herzlich eingeladen, bei unserem
+              <a href="../training.html">Training</a> vorbeizuschauen!
+            </p>
+          </div>
+
+          <footer class="blog-post-footer">
+            <a href="../blog.html" class="btn btn-secondary"
+              >« Zurück zur Blog-Übersicht</a
+            >
+            <!-- Falls blog.html im Root -->
+          </footer>
+        </article>
+      </div>
     </main>
 
     <footer>
-        <div class="container">
-            <p>&copy; <span id="currentYear"></span> Schachclub SV Dettingen/Erms Jugend</p>
-        </div>
+      <div class="container">
+        <p>
+          © <span id="currentYear"></span> Schachclub SV Dettingen/Erms Jugend
+        </p>
+      </div>
     </footer>
-    <script src="assets/script.js" defer></script>
-</body>
+    <script src="../assets/script.js" defer></script>
+    <!-- KORRIGIERT -->
+  </body>
 </html>
