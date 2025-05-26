@@ -5,34 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Über Uns - Schachclub SV Dettingen/Erms</title>
     <link rel="stylesheet" href="assets/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-      <div class="logo-placeholder">Logo</div>
-      <h1>Willkommen beim Schachclub SV Dettingen/Erms Jugend</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Startseite</a></li>
-          <li><a href="training.html">Training</a></li>
-          <li><a href="ueber_uns.html">Über Uns</a></li>
-          <li><a href="kontakt.html">Kontakt</a></li>
-        </ul>
-      </nav>
+      <div class="container header-content">
+        <img src="assets/logo.png" alt="Schachclub Dettingen/Erms Logo" class="logo" />
+        <div class="header-text">
+            <h1>Willkommen bei der Jugendabteilung</h1>
+            <p class="subtitle">des SV Dettingen/Erms e.V.</p>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Startseite</a></li>
+            <li><a href="training.html">Training</a></li>
+            <li><a href="ueber_uns.html">Über Uns</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
     <main>
-        <h1>Über Uns - Die Schachjugend</h1>
-        <section id="philosophy">
-            <h2>Unsere Philosophie</h2>
-            <p>Der SV Dettingen/Erms e.V. legt großen Wert auf die Förderung des Jugendschachs. Wir möchten Kindern und Jugendlichen nicht nur das Schachspiel beibringen, sondern auch wichtige Werte wie Fairness, Respekt und Teamgeist vermitteln.</p>
-            <p>Unser Ziel ist es, eine positive und unterstützende Umgebung zu schaffen, in der junge Talente wachsen und ihre Leidenschaft für Schach entdecken können. Schach fördert die Konzentration, das strategische Denken und die Kreativität – Fähigkeiten, die auch abseits des Bretts von großem Nutzen sind.</p>
-        </section>
-        <section id="club-info">
-            <h2>Unser Verein</h2>
-            <p>Die Schachabteilung ist ein Teil des Gesamtvereins SV Dettingen/Erms e.V. Neben der Jugendförderung haben wir auch aktive Erwachsenenmannschaften und nehmen regelmäßig an regionalen und überregionalen Wettkämpfen teil.</p>
-        </section>
+        <div class="container">
+            <h1>Über Uns - Die Schachjugend</h1>
+            <section id="philosophy">
+                <h2>Unsere Philosophie: Schach macht Spaß!</h2>
+                <p>Der SV Dettingen/Erms e.V. legt großen Wert auf die Förderung des Jugendschachs. Wir möchten Kindern und Jugendlichen nicht nur das Schachspiel beibringen, sondern auch wichtige Werte wie <strong>Fairness, Respekt und Teamgeist</strong> vermitteln.</p>
+                <p>Unser Ziel ist es, eine positive und unterstützende Umgebung zu schaffen, in der junge Talente wachsen und ihre Leidenschaft für Schach entdecken können. Schach fördert die <strong>Konzentration, das strategische Denken und die Kreativität</strong> – Fähigkeiten, die auch abseits des Bretts von großem Nutzen sind.</p>
+                <p>Bei uns steht der Spaß am Spiel im Vordergrund, kombiniert mit der Möglichkeit, sich kontinuierlich zu verbessern und neue Freundschaften zu schließen.</p>
+            </section>
+            <section id="club-info">
+                <h2>Unser Verein: Mehr als nur Schach</h2>
+                <p>Die Schachabteilung ist ein stolzer und aktiver Teil des Gesamtvereins SV Dettingen/Erms e.V. Neben der engagierten Jugendförderung haben wir auch aktive Erwachsenenmannschaften, die erfolgreich an regionalen und überregionalen Wettkämpfen teilnehmen.</p>
+                <p>Wir bieten eine lebendige Vereinsgemeinschaft, in der Generationen zusammenkommen und die Faszination für das königliche Spiel teilen. Erfahre mehr über den <a href="[Link zur Hauptseite des SV Dettingen, falls vorhanden]" target="_blank" rel="noopener noreferrer">Gesamtverein</a> oder besuche uns, um Teil unserer Schachfamilie zu werden.</p>
+            </section>
+            <section id="team">
+                <h2>Unsere Jugendtrainer (Beispiel)</h2>
+                <p>Engagierte und erfahrene Trainer kümmern sich um unsere Nachwuchsspieler:</p>
+                <ul>
+                    <li><strong>Max Mustermann:</strong> Hauptjugendtrainer, C-Lizenz</li>
+                    <li><strong>Erika Beispiel:</strong> Co-Trainerin, langjährige Spielerin</li>
+                </ul>
+                <p><em>(Diese Sektion kann nach Bedarf angepasst oder entfernt werden.)</em></p>
+            </section>
+        </div>
     </main>
     <footer>
-        <p>&copy; 2025 Schachclub SV Dettingen/Erms Jugend</p>
+      <div class="container">
+        <p>© <span id="currentYear"></span> Schachclub SV Dettingen/Erms Jugend</p>
+      </div>
     </footer>
+    <script src="assets/script.js" defer></script>
 </body>
 </html>

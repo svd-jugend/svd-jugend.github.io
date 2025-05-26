@@ -96,6 +96,7 @@ main {
   padding: 2rem 0;
 }
 
+/* Styles specific to index.html */
 .hero-intro {
   text-align: center;
   margin-bottom: 2.5rem;
@@ -223,6 +224,96 @@ main {
     font-style: italic;
 }
 
+/* >>> START: Main Content General Styles for Subpages <<< */
+main .container > h1 { /* Page Title für Unterseiten */
+  font-family: var(--font-secondary);
+  font-size: 2.2rem;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: 2.5rem; 
+  padding-bottom: 0.75rem; 
+  border-bottom: 2px solid var(--color-secondary); 
+}
+
+main section { /* Allgemeiner Stil für <section> auf Unterseiten */
+  background-color: var(--color-background); 
+  padding: 2rem; 
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+}
+
+main section h2 {
+  font-family: var(--font-secondary);
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-light-gray); 
+}
+
+main section p,
+main section ul,
+main section address {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+main section ul { /* Standard-Listen auf Unterseiten */
+  list-style: none; 
+  padding-left: 0;
+}
+
+main section ul li {
+  margin-bottom: 0.6rem;
+  padding-left: 1.5em; 
+  position: relative;
+}
+
+main section ul li::before { /* Standard-Listen-Icon */
+  content: '›'; 
+  color: var(--color-secondary);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0.05em; /* Kleine Anpassung für bessere vertikale Ausrichtung */
+}
+
+main section ul strong, main section p strong {
+    font-weight: 600; 
+    color: var(--color-primary); 
+}
+
+main section a { /* Links innerhalb der Content-Sektionen */
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+main section a:hover {
+    text-decoration: underline;
+    color: #8c2226; 
+}
+
+address {
+    font-style: normal;
+    line-height: 1.7;
+}
+
+/* Spezifische Anpassung für Kontakt-Listen-Items */
+#contact-info ul li::before {
+    content: ""; /* Kein Icon für Kontakt-E-Mail/Telefon */
+}
+#contact-info ul li {
+    padding-left: 0; /* Kein Einzug, wenn kein Icon */
+}
+#contact-info ul li strong {
+    display: inline-block;
+    min-width: 120px; /* Für bessere Ausrichtung der Kontakt-Details */
+    margin-right: 0.5em; /* Kleiner Abstand zum folgenden Text */
+}
+/* >>> END: Main Content General Styles for Subpages <<< */
+
+
 /* Footer */
 footer {
   background-color: var(--color-text);
@@ -273,5 +364,13 @@ footer {
   }
   .features-grid {
     grid-template-columns: 1fr; /* Eine Spalte auf kleinen Bildschirmen */
+  }
+
+  /* Anpassung für Unterseiten-Titel auf kleinen Bildschirmen */
+  main .container > h1 {
+    font-size: 1.8rem; /* Etwas kleiner auf Mobilgeräten */
+  }
+  main section h2 {
+    font-size: 1.5rem; /* Etwas kleiner auf Mobilgeräten */
   }
 }
