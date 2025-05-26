@@ -1,7 +1,10 @@
+/* Grundstyling */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
     color: #333;
+    margin: 0;
+    padding: 0;
 }
 
 header {
@@ -11,10 +14,39 @@ header {
     text-align: center;
 }
 
-footer {
-    text-align: center;
-    margin-top: 2rem;
-    padding: 1rem;
-    background-color: #4CAF50;
-    color: white;
+/* Fade-In Animation */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Styling für Schachbrett (Beispiel) */
+.chessboard {
+    display: grid;
+    grid-template-columns: repeat(8, 50px);
+    grid-template-rows: repeat(8, 50px);
+    gap: 1px;
+    margin: 2rem auto;
+}
+
+.chessboard div {
+    width: 50px;
+    height: 50px;
+}
+
+.chessboard div:nth-child(even) {
+    background-color: #f0d9b5; /* helles Holz */
+}
+
+.chessboard div:nth-child(odd) {
+    background-color: #b58863; /* dunkles Holz */
 }
