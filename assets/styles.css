@@ -37,6 +37,13 @@ header {
     justify-content: space-between;
     align-items: center;
     border-bottom: 3px solid #2980b9; /* Darker blue accent */
+    height: 80px; /* Höhe des Headers anpassen */
+}
+
+header .logo {
+    height: 60px; /* Größe des Logos anpassen */
+    width: auto;
+    margin-right: 20px; /* Abstand zwischen Logo und Text */
 }
 
 header h1 {
@@ -45,18 +52,7 @@ header h1 {
     font-size: 1.8em;
 }
 
-.logo-placeholder {
-    width: 100px;
-    height: 50px;
-    border: 2px solid #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #ffffff;
-}
-
+/* Navigation */
 nav ul {
     list-style-type: none;
     margin: 0;
@@ -134,14 +130,8 @@ footer p {
 .chessboard div:nth-child(even) {
     background-color: #b58863; /* Dark wood */
 }
-/* Adjusting for standard board layout (a1 is dark)
-   This typically requires the first square of an odd row to be dark, and first of an even row to be light.
-   The simple nth-child(odd/even) might not be perfect for a real board if squares are just divs.
-   For a visual representation, the current setup is acceptable.
-*/
 
-
-/* Fade-In Animation (Kept as is) */
+/* Fade-In Animation */
 .fade-in {
     opacity: 0;
     animation: fadeIn 1.5s forwards;
@@ -156,7 +146,7 @@ footer p {
     }
 }
 
-/* Button from index.html (basic styling to fit theme) */
+/* Button Styling */
 #animateButton {
     background-color: #3498db; /* Primary blue */
     color: white;
@@ -173,7 +163,6 @@ footer p {
     background-color: #2980b9; /* Darker blue */
 }
 
-
 /* Responsive Design */
 @media (max-width: 768px) {
     header {
@@ -187,7 +176,7 @@ footer p {
         font-size: 1.5em;
     }
 
-    .logo-placeholder {
+    header .logo {
         margin-bottom: 1em;
     }
 
@@ -233,7 +222,7 @@ footer p {
     header h1 {
         font-size: 1.3em;
     }
-    .logo-placeholder {
+    header .logo {
         width: 80px;
         height: 40px;
         font-size: 1em;
