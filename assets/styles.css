@@ -212,11 +212,11 @@ main {
     font-size: 1.8rem;
     margin-bottom: 0.75rem;
 }
-.cta-section p {
+.cta-section p { /* Allgemeines p in CTA, gilt auch für die Beschreibungen unter den QR-Codes */
     margin-bottom: 1.5rem;
 }
 
-.chessboard-placeholder {
+.chessboard-placeholder { /* Dieser Stil wird aktuell nicht mehr verwendet, da Lichess TV eingebunden wurde */
     background-color: rgba(255,255,255,0.1);
     padding: 1.5rem;
     border-radius: 6px;
@@ -224,20 +224,66 @@ main {
     font-style: italic;
 }
 
+/* >>> START: Styles für Lichess TV und QR-Codes <<< */
+.lichess-tv-container {
+    margin-bottom: 2rem; /* Abstand nach unten zum nächsten Element */
+    display: inline-block; /* Verhindert, dass es die volle Breite einnimmt, wenn nicht nötig */
+}
+
+.qr-codes-container {
+  display: flex;
+  justify-content: space-around; /* Verteilt die QR-Codes gleichmäßig */
+  align-items: flex-start; /* Text und Bild oben bündig */
+  flex-wrap: wrap; /* Erlaubt Umbruch auf kleineren Bildschirmen */
+  gap: 1.5rem; /* Abstand zwischen den QR-Code-Blöcken */
+  margin-top: 1.5rem; /* Abstand zum oberen Inhalt (Lichess TV oder CTA-Text) */
+}
+
+.qr-code-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 200px; /* Maximale Breite für einen QR-Code-Block */
+}
+
+.qr-code-item img.qr-code-image {
+  width: 150px; /* Größe des QR-Codes anpassen */
+  height: 150px;
+  border: 3px solid var(--color-secondary); /* Optionaler Rahmen in Akzentfarbe */
+  border-radius: 5px;
+  margin-bottom: 0.75rem;
+  background-color: white; /* Sicherstellen, dass der QR-Code gut lesbar ist */
+  padding: 5px; /* Kleiner Innenabstand, falls der QR-Code keinen eigenen Rand hat */
+}
+
+.qr-code-item p { /* Spezifisches p für QR-Code-Beschreibungen */
+  font-size: 0.9rem;
+  line-height: 1.3;
+  color: #f0f0f0; /* Etwas helleres Weiß für bessere Lesbarkeit auf grauem Grund */
+  margin-bottom: 0; /* P in QR-Code-Item hat keinen extra Abstand nach unten */
+}
+
+.qr-code-item p strong {
+  color: var(--color-secondary); /* Hervorhebung des Kanalnamens */
+}
+/* >>> END: Styles für Lichess TV und QR-Codes <<< */
+
+
 /* >>> START: Main Content General Styles for Subpages <<< */
 main .container > h1 { /* Page Title für Unterseiten */
   font-family: var(--font-secondary);
   font-size: 2.2rem;
   color: var(--color-primary);
   text-align: center;
-  margin-bottom: 2.5rem; 
-  padding-bottom: 0.75rem; 
-  border-bottom: 2px solid var(--color-secondary); 
+  margin-bottom: 2.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--color-secondary);
 }
 
 main section { /* Allgemeiner Stil für <section> auf Unterseiten */
-  background-color: var(--color-background); 
-  padding: 2rem; 
+  background-color: var(--color-background);
+  padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   margin-bottom: 2rem;
@@ -249,7 +295,7 @@ main section h2 {
   margin-bottom: 1rem;
   font-size: 1.8rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--color-light-gray); 
+  border-bottom: 1px solid var(--color-light-gray);
 }
 
 main section p,
@@ -260,18 +306,18 @@ main section address {
 }
 
 main section ul { /* Standard-Listen auf Unterseiten */
-  list-style: none; 
+  list-style: none;
   padding-left: 0;
 }
 
 main section ul li {
   margin-bottom: 0.6rem;
-  padding-left: 1.5em; 
+  padding-left: 1.5em;
   position: relative;
 }
 
 main section ul li::before { /* Standard-Listen-Icon */
-  content: '›'; 
+  content: '›';
   color: var(--color-secondary);
   font-weight: bold;
   position: absolute;
@@ -280,8 +326,8 @@ main section ul li::before { /* Standard-Listen-Icon */
 }
 
 main section ul strong, main section p strong {
-    font-weight: 600; 
-    color: var(--color-primary); 
+    font-weight: 600;
+    color: var(--color-primary);
 }
 
 main section a { /* Links innerhalb der Content-Sektionen */
@@ -291,7 +337,7 @@ main section a { /* Links innerhalb der Content-Sektionen */
 }
 main section a:hover {
     text-decoration: underline;
-    color: #8c2226; 
+    color: #8c2226;
 }
 
 address {
@@ -372,5 +418,25 @@ footer {
   }
   main section h2 {
     font-size: 1.5rem; /* Etwas kleiner auf Mobilgeräten */
+  }
+
+  /* Responsive Anpassungen für Lichess TV und QR-Codes */
+  .lichess-tv-container iframe {
+    width: 100% !important; /* Lässt das Iframe die volle Breite nutzen */
+    max-width: 320px; /* Begrenzt die maximale Breite des Iframes auf kleinen Screens */
+    /* aspect-ratio bleibt erhalten, Höhe passt sich an */
+  }
+
+  .qr-codes-container {
+    flex-direction: column; /* QR-Codes untereinander auf kleinen Bildschirmen */
+    align-items: center; /* Zentriert die Spalte */
+  }
+
+  .qr-code-item {
+    margin-bottom: 1.5rem; /* Abstand zwischen gestapelten QR-Codes */
+    max-width: none; /* Erlaubt dem QR-Code-Item, die volle Breite des Containers zu nutzen, falls gewünscht */
+  }
+   .qr-code-item:last-child {
+    margin-bottom: 0; /* Kein Abstand beim letzten Element in der Spalte */
   }
 }

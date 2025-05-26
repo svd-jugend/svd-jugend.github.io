@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Schachclub SV Dettingen/Erms Jugend</title>
+    <title>SV Dettingen/Erms Jugend</title>
     <link rel="stylesheet" href="assets/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -85,12 +85,34 @@
           <h2>Bereit für den nächsten Zug?</h2>
           <p>Werde Teil unserer Schachfamilie und entdecke dein Potenzial!</p>
 
-          <iframe
-            src="https://lichess.org/tv/frame?theme=brown&bg=dark"
-            style="width: 400px; aspect-ratio: 10/11"
-            allowtransparency="true"
-            frameborder="0"
-          ></iframe>
+          <div class="lichess-tv-container">
+            <iframe
+              src="https://lichess.org/tv/frame?theme=brown&bg=dark"
+              style="width: 400px; aspect-ratio: 10/11"
+              allowtransparency="true"
+              frameborder="0"
+              title="Lichess TV"
+            ></iframe>
+          </div>
+
+          <div class="qr-codes-container">
+            <div class="qr-code-item">
+              <img
+                src="assets/qr-jugendschach.png"
+                alt="QR-Code für WhatsApp Kanal SV Dettingen Jugendschach"
+                class="qr-code-image"
+              />
+              <p>WhatsApp Kanal:<br><strong>SV Dettingen Jugendschach</strong></p>
+            </div>
+            <div class="qr-code-item">
+              <img
+                src="assets/qr-schachkurse.png" 
+                alt="QR-Code für WhatsApp Kanal SV Dettingen Schachkurse"
+                class="qr-code-image"
+              />
+              <p>WhatsApp Kanal:<br><strong>SV Dettingen Schachkurse</strong></p>
+            </div>
+          </div>
         </section>
       </div>
     </main>
