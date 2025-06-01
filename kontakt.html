@@ -10,39 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
     rel="stylesheet" />
-
-  <!-- Leaflet CSS für Kartenanzeige -->
+  <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-
-  <style>
-    /* Anpassungen für die OpenCage-Karte */
-    #map {
-      width: 100%;
-      height: 400px;
-      /* Höhe der Karte */
-      border-radius: 10px;
-      /* Abgerundete Ecken */
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      /* Weicher Schatten */
-      margin-bottom: 2rem;
-      /* Abstand nach unten */
-    }
-
-    /* Responsive Anpassungen */
-    @media (max-width: 768px) {
-      #map {
-        height: 300px;
-        /* Reduzierte Höhe auf mobilen Geräten */
-      }
-    }
-
-    @media (max-width: 480px) {
-      #map {
-        height: 250px;
-        /* Weitere Reduzierung der Höhe auf sehr kleinen Geräten */
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -53,8 +22,10 @@
       </div>
       <div class="header-main-content-custom">
         <div class="welcome-text-block-custom">
-          <h1>Willkommen bei der Jugendabteilung</h1>
-          <p class="subtitle-custom">des SV Dettingen/Erms e.V.</p>
+          <!-- Neuer Wrapper für H1 und P -->
+          <h1>Willkommen bei der Jugendabteilung
+            <p class="subtitle-custom">des SV Dettingen/Erms e.V.
+          </h1>
         </div>
         <nav class="navigation-custom">
           <ul>
@@ -92,60 +63,48 @@
           72581 Dettingen/Erms<br />
         </address>
 
-        <!-- Karte hinzufügen -->
-        <div id="map"></div>
+        <!-- Optional: Google Maps Einbettung -->
+        <!-- <div class="map-placeholder" style="
+              margin-top: 20px;
+              background-color: #eee;
+              padding: 20px;
+              text-align: center;
+              border-radius: 6px;
+            ">
+          <a href="https://maps.app.goo.gl/aT7DXmM3cnH3xqRz8" target="_blank" class="btn btn-secondary">Auf Karte
+            anzeigen</a>
+        </div> -->
+
+        <!-- Leaflet Karte -->
+        <div id="map" style="width: 100%; height: 400px;"></div>
       </section>
     </div>
   </main>
 
   <footer>
     <div class="container">
-      <p>© <span id="currentYear"></span> Schachclub SV Dettingen/Erms Jugend</p>
+      <p>
+        © <span id="currentYear"></span> Schachclub SV Dettingen/Erms Jugend
+      </p>
     </div>
   </footer>
 
-  <!-- Leaflet JS für Kartenanzeige -->
+  <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-  <!-- OpenCage Geocoder JS -->
-  <script src="https://unpkg.com/opencage-geocoder@1.3.0/dist/opencage-geocoder.min.js"></script>
 
   <script>
-    // OpenCage API-Schlüssel (ersetze mit deinem eigenen API-Schlüssel)
-    const apiKey = '9a0f2ad5dfae41aca80405ee355e3f82';
-
-    // Initialisierung der Leaflet-Karte
-    var map = L.map('map').setView([48.52983774675892, 9.347213077151226], 25); // Startpunkt und Zoom-Level
+    // Karte initialisieren
+    var map = L.map('map').setView([48.5298, 9.347131], 25); // Setze die Position und Zoom-Level
 
     // OpenStreetMap Tile Layer hinzufügen
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    // Geocoding-Funktion
-    const geocoder = new OpenCage.Geocoder(apiKey);
-
-    // Geocode die Adresse von Dettingen/Erms
-    geocoder.geocode('SV Dettingen/Erms, Altes Rathaus, Hülbener Straße 1, 72581 Dettingen/Erms, Deutschland', function (data) {
-      if (data && data.results.length > 0) {
-        // Geokodierte Position
-        const location = data.results[0].geometry;
-        const lat = location.lat;
-        const lng = location.lng;
-
-        console.log('Geokodierte Koordinaten: ', lat, lng); // Überprüfung der Koordinaten
-
-        // Marker hinzufügen
-        var marker = L.marker([lat, lng]).addTo(map);
-        marker.bindPopup("<b>SV Dettingen/Erms</b><br>Unser Trainingsort.").openPopup();
-
-        // Karte auf die geokodierten Koordinaten zentrieren
-        map.setView([lat, lng], 15);
-      } else {
-        console.error("Fehler bei der Geocodierung:", data.status.message);
-      }
-    });
+    // Marker hinzufügen (z.B. auf den Koordinaten für Dettingen/Erms)
+    var marker = L.marker([48.5298, 9.347131]).addTo(map);
+    marker.bindPopup("<b>Schachverein Dettingen/Erms e.V.</b><br>Altes Rathaus (Großer Versammlungsraum)").openPopup();
   </script>
-
 </body>
 
 </html>
