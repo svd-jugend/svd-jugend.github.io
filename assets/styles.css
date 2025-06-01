@@ -155,8 +155,8 @@ main {
   align-items: center;
 }
 .feature-icon {
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     margin-bottom: 1rem;
     object-fit: cover;
@@ -180,7 +180,7 @@ main {
   position: relative;
 }
 .feature-card ul li::before {
-  content: '✔';
+  content: '♟️';
   color: var(--color-secondary);
   font-weight: bold;
   position: absolute;
@@ -198,7 +198,7 @@ main {
   cursor: pointer;
   border: none;
   font-size: 1rem;
-  margin-top: auto;
+  margin-top: auto; /* Sorgt dafür, dass Buttons in Flex-Containern wie .feature-card unten bleiben */
 }
 .btn:hover {
     text-decoration: none !important;
@@ -335,15 +335,44 @@ main section p, main section ul, main section address {
 }
 main section ul { list-style: none; padding-left: 0; }
 main section ul li { margin-bottom: 0.6rem; padding-left: 1.5em; position: relative; }
-main section ul li::before { content: '›'; color: var(--color-secondary); font-weight: bold; position: absolute; left: 0; top: 0.05em; }
+main section ul li::before { content: '♟️'; color: var(--color-secondary); font-weight: bold; position: absolute; left: 0; top: 0.05em; }
 main section ul strong, main section p strong { font-weight: 600; color: var(--color-primary); }
 main section a { color: var(--color-primary); text-decoration: none; font-weight: 600; }
 main section a:hover { text-decoration: underline; color: #8c2226; }
-main section .btn a, main section .btn a:hover { text-decoration: none !important; }
+main section .btn a, main section .btn a:hover { text-decoration: none !important; } /* Sicherstellen, dass Links in Buttons nicht unterstrichen werden */
 address { font-style: normal; line-height: 1.7; }
 #contact-info ul li::before { content: ""; }
 #contact-info ul li { padding-left: 0; }
 #contact-info ul li strong { display: inline-block; min-width: 120px; margin-right: 0.5em; }
+
+/* === START: ERGÄNZUNGEN FÜR "WARUM SCHACH?" SEITE === */
+/* Bild-Styling für Inhaltsbilder wie auf der "Warum Schach?"-Seite */
+img.content-image {
+  display: block; /* Erlaubt margin: auto für horizontale Zentrierung */
+  max-width: 100%; /* Macht das Bild responsiv */
+  height: auto;    /* Behält das Seitenverhältnis bei */
+  margin: 1.25rem auto; /* ca. 20px oben/unten, und zentriert horizontal */
+  border-radius: 8px; /* Abgerundete Ecken, passend zum Design */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Leichter Schatten */
+  /* max-height: 400px; */
+  /* Optional:
+  max-height: 400px;
+  object-fit: cover; // falls max-height gesetzt wird und das Bild beschnitten werden soll
+  */
+}
+
+/* Spezifisches Styling für die Download-Sektion auf der "Warum Schach?"-Seite */
+#broschuere-download {
+  text-align: center; /* Zentriert den Button und den Text in dieser Sektion */
+}
+
+/* Sicherstellen, dass der Button in der Download-Sektion nicht die volle Breite einnimmt,
+   falls er das durch andere Regeln tun würde, und den `margin-top: auto` vom globalen .btn-Style aufhebt,
+   falls er hier nicht gewünscht ist (oft ist er für Karten-Layouts gedacht). */
+#broschuere-download .btn {
+  margin-top: 1rem; /* Eigener Abstand nach oben, statt 'auto' */
+}
+/* === END: ERGÄNZUNGEN FÜR "WARUM SCHACH?" SEITE === */
 
 /* Blog Page Specific Styles */
 .blog-post-preview {
@@ -385,7 +414,7 @@ address { font-style: normal; line-height: 1.7; }
   border-bottom: 1px solid var(--color-light-gray);
   padding-bottom: 0.75rem;
 }
-.blog-post-preview .btn { margin-top: 1rem; display: inline-block; }
+.blog-post-preview .btn { margin-top: 1rem; display: inline-block; } /* margin-top: auto; wurde oben für .btn global gesetzt, ggf. hier anpassen */
 
 .blog-post-full {
   background-color: var(--color-background);
@@ -519,4 +548,10 @@ footer {
   .qr-codes-container { flex-direction: column; align-items: center; }
   .qr-code-item { margin-bottom: 1.5rem; max-width: none; }
   .qr-code-item:last-child { margin-bottom: 0; }
+
+  /* Responsive Anpassung für .content-image */
+  img.content-image {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 }
