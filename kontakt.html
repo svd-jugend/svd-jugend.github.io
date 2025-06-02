@@ -203,17 +203,26 @@
 
   <!-- JavaScript für Karte, reCAPTCHA für E-Mail und Footer -->
   <script>
-    var map = L.map('map').setView([48.52977, 9.3471], 17);
+    var map = L.map('map').setView([48.52977, 9.3471], 25); // Setze die Position und Zoom-Level
+
+    // OpenStreetMap Tile Layer hinzufügen
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
-    var customIcon = L.icon({ /* ... icon config ... */
-      iconUrl: 'assets/logo_keintext.png', iconSize: [51, 51], iconAnchor: [25, 50],
-      popupAnchor: [0, -50], shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png', shadowSize: [41, 41]
+
+    // Benutzerdefiniertes Marker-Icon erstellen (Farbe anpassen)
+    var customIcon = L.icon({
+      iconUrl: 'assets/logo_keintext.png', // Pfad zum benutzerdefinierten Icon
+      iconSize: [51, 51], // Größe des Markers
+      iconAnchor: [12, 41], // Anker des Markers
+      popupAnchor: [10, -40], // Popup-Position relativ zum Marker
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+      shadowSize: [41, 41] // Größe des Schattens
     });
+
+    // Marker hinzufügen und benutzerdefiniertes Icon verwenden
     var marker = L.marker([48.52977, 9.3471], { icon: customIcon }).addTo(map);
     marker.bindPopup("<b>Schachverein Dettingen/Erms e.V.</b><br>Altes Rathaus (Großer Versammlungsraum)").openPopup();
-
     // Globale Variablen für Widget-IDs
     var recaptchaEmailWidgetId;
     var recaptchaFormWidgetId;
