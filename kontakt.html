@@ -13,6 +13,8 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <!-- Google reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -23,7 +25,6 @@
       </div>
       <div class="header-main-content-custom">
         <div class="welcome-text-block-custom">
-          <!-- Neuer Wrapper für H1 und P -->
           <h1>Willkommen bei der Jugendabteilung</h1>
           <p class="subtitle-custom">des SV Dettingen/Erms e.V.</p>
         </div>
@@ -51,9 +52,12 @@
         </p>
         <ul>
           <li><strong>Jugendleiter:</strong> Tim Winterstein</li>
-          <li>
+          <li id="email-container" style="display: none;">
             <strong>E-Mail:</strong>
-            <a href="mailto:svd.jugendschach@gmail.com">svd.jugendschach@gmail.com</a>
+            <!-- E-Mail-Adresse, die nach erfolgreichem CAPTCHA angezeigt wird -->
+            <span id="email-address">
+              <a href="mailto:svd.jugendschach@gmail.com">svd.jugendschach@gmail.com</a>
+            </span>
           </li>
         </ul>
         <p><strong>Adresse unseres Trainingslokals:</strong></p>
@@ -65,6 +69,12 @@
 
         <!-- Leaflet Karte -->
         <div id="map" style="width: 100%; height: 400px;"></div>
+
+        <!-- reCAPTCHA -->
+        <div id="recaptcha-container" class="g-recaptcha" data-sitekey="6Lf8alMrAAAAABxmzBloUpWH334Vue_LKxZnnLEA"></div>
+
+        <!-- Button zum Überprüfen -->
+        <button id="verify-captcha" onclick="verifyCaptcha()">E-Mail anzeigen</button>
       </section>
     </div>
   </main>
@@ -100,6 +110,18 @@
     // Marker hinzufügen und benutzerdefiniertes Icon verwenden
     var marker = L.marker([48.52977, 9.3471], { icon: customIcon }).addTo(map);
     marker.bindPopup("<b>Schachverein Dettingen/Erms e.V.</b><br>Altes Rathaus (Großer Versammlungsraum)").openPopup();
+
+    // Funktion zum Überprüfen des reCAPTCHA und Anzeigen der E-Mail
+    function verifyCaptcha() {
+      var response = grecaptcha.getResponse();
+      if (response.length === 0) {
+        alert("Bitte bestätigen Sie, dass Sie kein Roboter sind.");
+      } else {
+        // reCAPTCHA ausblenden und E-Mail anzeigen
+        document.getElementById("recaptcha-container").style.display = "none";
+        document.getElementById("email-container").style.display = "block";
+      }
+    }
   </script>
 </body>
 
