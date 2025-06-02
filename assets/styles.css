@@ -770,6 +770,30 @@ footer {
   #contact-form-info .form-group textarea {
     width: 100%;
   }
+  .form-container .form-group label {
+    font-weight: 600;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .form-container > h4 { /* Selektiert direktes Kind h4 von .form-container */
+    font-family: var(--font-secondary); /* Roboto */
+    font-size: 2.2rem; /* Wie H1 */
+    color: var(--color-primary); /* Wie H1 */
+    text-align: center; /* Ist schon durch .text-center Klasse im HTML, aber hier zur Sicherheit */
+    
+    /* Anpassung von margin und padding, um der H1-Ästhetik näher zu kommen,
+       aber vielleicht nicht ganz so viel Abstand wie eine Hauptseiten-H1.
+       Der ursprüngliche h4-margin-bottom war 1.5rem.
+       Der ursprüngliche H1-margin-bottom war 2.5rem.
+       Wir können einen Wert dazwischen oder den H1-Wert nehmen.
+    */
+    margin-top: 0; /* Standard-h4 könnte margin-top haben, hier ggf. zurücksetzen */
+    margin-bottom: 2rem; /* Etwas weniger als die Haupt-H1, aber mehr als Standard-h4 */
+    padding-bottom: 0.75rem; /* Wie H1 */
+    border-bottom: 2px solid var(--color-secondary); /* Gelbe Unterstreichung wie H1 */
 
   @media (max-width: 768px) {
     #contact-form-info {
