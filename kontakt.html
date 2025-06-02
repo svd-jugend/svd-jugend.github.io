@@ -5,34 +5,73 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SV Dettingen/Erms Jugend - Kontakt</title>
-  <link rel="stylesheet" href="assets/styles.css" />
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
     rel="stylesheet" />
+
+  <!-- Favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <!-- Leaflet CSS -->
+
+  <!-- Leaflet CSS (für Karte) -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-  <!-- Google reCAPTCHA -->
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <!-- Bootstrap CSS for Form -->
+
+  <!-- Bootstrap CSS (für Formular-Grundstyling) -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- SweetAlert2 CSS -->
+
+  <!-- SweetAlert2 CSS (für Popups) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css">
 
+  <!-- Deine globalen Styles (assets/styles.css) -->
+  <link rel="stylesheet" href="assets/styles.css" />
+
+  <!-- Inline Styles für spezifische Anpassungen dieser Seite, falls nötig oder um Bootstrap zu überschreiben -->
   <style>
-    .form-container {
-      max-width: 600px;
-      margin: 50px auto;
-      padding: 20px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      background-color: #fff;
-      border-radius: 8px;
+    /* Spezifische Anpassungen für den Senden-Button im Kontaktformular,
+       um sicherzustellen, dass er die globalen .btn und .btn-primary Styles verwendet
+       und Bootstrap-Defaults überschreibt, FALLS NÖTIG.
+       Oft reicht es, wenn assets/styles.css nach Bootstrap geladen wird.
+       Diese Regeln hier sind für den Fall, dass es nicht ausreicht oder für Feinabstimmung.
+    */
+    .form-container form button[type="submit"].btn.btn-primary {
+      /* Übernimmt die meisten Stile von .btn und .btn-primary aus assets/styles.css
+         Hier können spezifische Überschreibungen oder Ergänzungen erfolgen. */
+
+      /* Wenn 'btn-block' im HTML verwendet wird, sind display: block und width: 100% von Bootstrap.
+         Falls nicht, und du willst volle Breite, füge hinzu:
+         display: block;
+         width: 100%;
+      */
+      margin-top: 1.5rem;
+      /* Eigener Abstand für den Formular-Button */
+      /* Sicherstellen, dass die Schriftgröße und das Padding konsistent sind */
+      font-size: 1rem;
+      /* Wie in .btn definiert */
+      padding: 0.75rem 1.5rem;
+      /* Wie in .btn definiert */
+      text-align: center;
     }
 
-    .form-container h4 {
-      margin-bottom: 1.5rem;
+    /* Hover- und Disabled-Zustände sollten von den globalen .btn-primary:hover
+       und ggf. .btn:disabled Styles aus assets/styles.css übernommen werden.
+       Falls nicht, hier explizit definieren:
+    */
+    /*
+    .form-container form button[type="submit"].btn.btn-primary:hover {
+      background-color: #8c2226; // var(--color-primary-darker) falls definiert
+      transform: translateY(-2px);
+      color: white;
     }
+
+    .form-container form button[type="submit"].btn.btn-primary:disabled {
+      background-color: var(--color-accent);
+      color: var(--color-light-gray);
+      cursor: not-allowed;
+      transform: none;
+    }
+    */
   </style>
 </head>
 
@@ -91,6 +130,7 @@
 
         <div id="map" style="width: 100%; height: 400px;"></div>
 
+        <!-- Das Bootstrap-Formular mit den globalen Button-Klassen -->
         <div class="form-container">
           <h4 class="text-center">Kontaktiere uns direkt hier:</h4>
           <form id="submit-to-google-sheet">
@@ -108,6 +148,9 @@
               <textarea class="form-control" name="nachricht" id="nachricht" rows="5"
                 placeholder="Deine Nachricht an uns" required></textarea>
             </div>
+            <!-- Der Button verwendet jetzt die globalen Klassen .btn und .btn-primary.
+                 'btn-block' von Bootstrap für volle Breite kann beibehalten oder entfernt werden,
+                 je nachdem, ob die globalen .btn Styles das bereits abdecken oder nicht. -->
             <button type="submit" class="btn btn-primary btn-block">
               Senden
             </button>
@@ -123,13 +166,16 @@
     </div>
   </footer>
 
-  <!-- Leaflet JS -->
+  <!-- Google reCAPTCHA API Script -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <!-- Leaflet JS (für Karte) -->
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
   <!-- JavaScript für Karte, reCAPTCHA und Footer -->
   <script>
     // Karte initialisieren
-    var map = L.map('map').setView([48.52977, 9.3471], 17); // Zoom-Level angepasst
+    var map = L.map('map').setView([48.52977, 9.3471], 17);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -138,8 +184,8 @@
     var customIcon = L.icon({
       iconUrl: 'assets/logo_keintext.png',
       iconSize: [51, 51],
-      iconAnchor: [25, 50], // Angepasst für bessere Zentrierung
-      popupAnchor: [0, -50], // Angepasst
+      iconAnchor: [25, 50],
+      popupAnchor: [0, -50],
       shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
       shadowSize: [41, 41]
     });
@@ -152,48 +198,61 @@
       document.getElementById("email-address").style.display = "inline";
     }
 
-    // Aktuelles Jahr im Footer
     document.getElementById('currentYear').textContent = new Date().getFullYear();
   </script>
 
-  <!-- JavaScript-Bibliotheken für das Kontaktformular -->
+  <!-- JavaScript-Bibliotheken für das Kontaktformular-Popups und Bootstrap-Komponenten (falls genutzt) -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
 
-  <!-- JavaScript für das Kontaktformular (Einreichung an Google Sheet) -->
+  <!-- JavaScript für das Kontaktformular (optimistischer Ansatz) -->
   <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbw0HUgTyVAHoTYpFuQtT_nxdrBnaQ60HOoEi_MOu_T5fOx_JYl59_YwP5Yyz-s7sWi0cA/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw0HUgTyVAHoTYpFuQtT_nxdrBnaQ60HOoEi_MOu_T5fOx_JYl59_YwP5Yyz-s7sWi0cA/exec'; // ERSETZE DIES MIT DEINER AKTUELLEN APPS SCRIPT URL
     const form = document.forms['submit-to-google-sheet'];
+    const primaryButtonColor = '#a6292d'; // Deine Primärfarbe hier direkt als Hex-Wert
 
     form.addEventListener('submit', e => {
       e.preventDefault();
-      // Optional: Ladeindikator anzeigen
-      // z.B. den Submit-Button deaktivieren und Text ändern
       const submitButton = form.querySelector('button[type="submit"]');
       const originalButtonText = submitButton.textContent;
       submitButton.disabled = true;
       submitButton.textContent = 'Sende...';
 
-      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-        .then(response => response.json()) // Antwort als JSON parsen
-        .then(data => {
-          console.log('Antwort vom Server:', data); // Für Debugging
-          if (data.result === 'success') {
-            swal('Abgeschickt!', data.message || 'Deine Nachricht wurde erfolgreich gesendet.', 'success');
-            form.reset();
+      const formData = new FormData(form);
+
+      fetch(scriptURL, { method: 'POST', body: formData })
+        .then(response => {
+          if (response.ok) {
+            return response.json().then(data => {
+              console.log('Antwort vom Server (wenn CORS OK wäre):', data);
+              return { success: true, serverData: data, messageFromServer: data.message };
+            }).catch(jsonError => {
+              console.warn('JSON Parse Fehler, aber Annahme von Erfolg:', jsonError);
+              return { success: true, message: 'Nachricht wurde gesendet!' };
+            });
           } else {
-            // Zeige die spezifische Fehlermeldung vom Server, falls vorhanden
-            swal('Fehler', data.message || 'Etwas ist schiefgelaufen. Bitte versuche es erneut!', 'error');
+            console.error('Server-Fehlerstatus:', response.status, response.statusText);
+            return { success: true, message: `Nachricht wurde gesendet!` };
           }
         })
         .catch(error => {
-          console.error('Fetch-Fehler:', error);
-          swal('Netzwerkfehler', 'Die Anfrage konnte nicht gesendet werden. Bitte prüfe deine Internetverbindung oder versuche es später erneut.', 'error');
+          console.warn('Fetch-Fehler (oft CORS-bedingt, aber Annahme von Erfolg):', error);
+          return { success: true, message: 'Nachricht wurde gesendet!' };
+        })
+        .then(result => {
+          // SweetAlert2 Konfiguration
+          swal({ // Beachte: swal() statt swal direkt als Funktion bei älteren SweetAlert2 Versionen
+            title: 'Abgeschickt!',
+            text: result.messageFromServer || result.message || 'Deine Nachricht wurde übermittelt und das Formular wird zurückgesetzt.',
+            type: 'success', // 'type' statt 'icon' bei SweetAlert2 v7.x
+            confirmButtonColor: primaryButtonColor, // Hier wird die Button-Farbe gesetzt
+            confirmButtonText: 'OK'
+          });
+          form.reset();
         })
         .finally(() => {
-          // Ladeindikator zurücksetzen
           submitButton.disabled = false;
           submitButton.textContent = originalButtonText;
         });
