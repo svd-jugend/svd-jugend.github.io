@@ -127,6 +127,59 @@
   <!-- Leaflet JS (für Karte) -->
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
+  <!-- JavaScript für Karte, reCAPTCHA für E-Mail und Footer -->
+  <script>
+    var map = L.map('map').setView([48.52977, 9.3471], 25); // Setze die Position und Zoom-Level
+
+    // OpenStreetMap Tile Layer hinzufügen
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Benutzerdefiniertes Marker-Icon erstellen (Farbe anpassen)
+    var customIcon = L.icon({
+      iconUrl: 'assets/logo_keintext.png', // Pfad zum benutzerdefinierten Icon
+      iconSize: [51, 51], // Größe des Markers
+      iconAnchor: [12, 41], // Anker des Markers
+      popupAnchor: [10, -40], // Popup-Position relativ zum Marker
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+      shadowSize: [41, 41] // Größe des Schattens
+    });
+
+    // Marker hinzufügen und benutzerdefiniertes Icon verwenden
+    var marker = L.marker([48.52977, 9.3471], { icon: customIcon }).addTo(map);
+    marker.bindPopup("<b>Schachverein Dettingen/Erms e.V.</b><br>Altes Rathaus (Großer Versammlungsraum)").openPopup();
+    // Globale Variablen für Widget-IDs
+    var recaptchaEmailWidgetId;
+    var recaptchaFormWidgetId;
+
+    // Callback, der aufgerufen wird, wenn die reCAPTCHA-API geladen ist
+    var onloadCallback = function () {
+      // Rendere das reCAPTCHA für die E-Mail-Anzeige
+      if (document.getElementById('recaptcha-email')) {
+        recaptchaEmailWidgetId = grecaptcha.render('recaptcha-email', {
+          'sitekey': '6Lf8alMrAAAAABxmzBloUpWH334Vue_LKxZnnLEA', // Dein Site Key
+          'callback': onCaptchaSuccessEmail
+        });
+      }
+      // Rendere das reCAPTCHA für das Formular
+      if (document.getElementById('recaptcha-form')) {
+        recaptchaFormWidgetId = grecaptcha.render('recaptcha-form', {
+          'sitekey': '6Lf8alMrAAAAABxmzBloUpWH334Vue_LKxZnnLEA' // Dein Site Key
+          // Kein expliziter Callback hier nötig, wir prüfen on submit
+        });
+      }
+    };
+
+    function onCaptchaSuccessEmail(token) { // token wird übergeben, aber nicht direkt genutzt in dieser Funktion
+      console.log("Email reCAPTCHA gelöst, Token: ", token);
+      document.getElementById("captcha-container").style.display = "none";
+      document.getElementById("email-address").style.display = "inline";
+    }
+
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
+
   <!-- JavaScript-Bibliotheken für das Kontaktformular-Popups und Bootstrap-Komponenten -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
