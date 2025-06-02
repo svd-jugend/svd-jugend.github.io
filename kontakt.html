@@ -23,24 +23,16 @@
   <style>
     .form-container {
       max-width: 600px;
-      /* Etwas breiter für besseres Layout auf der Seite */
       margin: 50px auto;
-      /* Zentriert und mit Abstand oben */
       padding: 20px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       background-color: #fff;
       border-radius: 8px;
-      /* Abgerundete Ecken */
     }
 
     .form-container h4 {
       margin-bottom: 1.5rem;
-      /* Mehr Abstand unter der Überschrift */
     }
-
-    /* Sicherstellen, dass die Seite einen hellen Hintergrund hat, falls das Theme dunkel ist */
-    /* body { background-color: #f8f9fa; } */
-    /* Optional, falls benötigt */
   </style>
 </head>
 
@@ -81,12 +73,10 @@
           <li><strong>Jugendleiter:</strong> Tim Winterstein</li>
           <li id="email-container">
             <strong>E-Mail:</strong>
-            <!-- reCAPTCHA-Box wird hier angezeigt, bevor der Nutzer es ausfüllt -->
             <span id="captcha-container">
               <div class="g-recaptcha" data-sitekey="6Lf8alMrAAAAABxmzBloUpWH334Vue_LKxZnnLEA"
                 data-callback="onCaptchaSuccess"></div>
             </span>
-            <!-- E-Mail wird hier angezeigt, nachdem der Nutzer das reCAPTCHA erfolgreich abgeschlossen hat -->
             <span id="email-address" style="display: none;">
               <a href="mailto:svd.jugendschach@gmail.com">svd.jugendschach@gmail.com</a>
             </span>
@@ -99,7 +89,6 @@
           72581 Dettingen/Erms<br />
         </address>
 
-        <!-- Leaflet Karte -->
         <div id="map" style="width: 100%; height: 400px;"></div>
 
         <div class="form-container">
@@ -115,7 +104,7 @@
                 required />
             </div>
             <div class="form-group">
-              <label for="nachricht">Nachricht:</label> <!-- Korrigiert -->
+              <label for="nachricht">Nachricht:</label>
               <textarea class="form-control" name="nachricht" id="nachricht" rows="5"
                 placeholder="Deine Nachricht an uns" required></textarea>
             </div>
@@ -124,8 +113,6 @@
             </button>
           </form>
         </div>
-
-
       </section>
     </div>
   </main>
@@ -139,61 +126,76 @@
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-  <!-- JavaScript für Karte und reCAPTCHA -->
+  <!-- JavaScript für Karte, reCAPTCHA und Footer -->
   <script>
     // Karte initialisieren
-    var map = L.map('map').setView([48.52977, 9.3471], 25); // Setze die Position und Zoom-Level
+    var map = L.map('map').setView([48.52977, 9.3471], 17); // Zoom-Level angepasst
 
-    // OpenStreetMap Tile Layer hinzufügen
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    // Benutzerdefiniertes Marker-Icon erstellen (Farbe anpassen)
     var customIcon = L.icon({
-      iconUrl: 'assets/logo_keintext.png', // Pfad zum benutzerdefinierten Icon
-      iconSize: [51, 51], // Größe des Markers
-      iconAnchor: [12, 41], // Anker des Markers
-      popupAnchor: [10, -40], // Popup-Position relativ zum Marker
+      iconUrl: 'assets/logo_keintext.png',
+      iconSize: [51, 51],
+      iconAnchor: [25, 50], // Angepasst für bessere Zentrierung
+      popupAnchor: [0, -50], // Angepasst
       shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-      shadowSize: [41, 41] // Größe des Schattens
+      shadowSize: [41, 41]
     });
 
-    // Marker hinzufügen und benutzerdefiniertes Icon verwenden
     var marker = L.marker([48.52977, 9.3471], { icon: customIcon }).addTo(map);
     marker.bindPopup("<b>Schachverein Dettingen/Erms e.V.</b><br>Altes Rathaus (Großer Versammlungsraum)").openPopup();
 
-    // Callback für reCAPTCHA
     function onCaptchaSuccess() {
-      // reCAPTCHA ausblenden und E-Mail anzeigen
       document.getElementById("captcha-container").style.display = "none";
       document.getElementById("email-address").style.display = "inline";
     }
+
+    // Aktuelles Jahr im Footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
   </script>
 
-  <!-- JavaScript für das Kontaktformular -->
+  <!-- JavaScript-Bibliotheken für das Kontaktformular -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
 
+  <!-- JavaScript für das Kontaktformular (Einreichung an Google Sheet) -->
   <script>
-    const scriptURL = "https://script.google.com/macros/s/AKfycbxdjN9LbhP3zLhnyOL6t7ZVS-l25g1W4ZxOzSuzUj1WxUyM7x7-VhKnVMeXSFwqu-jTXQ/exec";
-    const form = document.forms["submit-to-google-sheet"];
-    form.addEventListener("submit", (e) => {
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyyiYCbis8MBUwwNsxeR_2SiqzeyrqGt_8VhibRPkwrJAt26nyTNBfZ3NEUuYeyjfXHbQ/exec';
+    const form = document.forms['submit-to-google-sheet'];
+
+    form.addEventListener('submit', e => {
       e.preventDefault();
-      var formData = new FormData(form);
+      // Optional: Ladeindikator anzeigen
+      // z.B. den Submit-Button deaktivieren und Text ändern
+      const submitButton = form.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.textContent;
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sende...';
 
-
-
-      fetch(scriptURL, { method: "POST", body: formData })
-        .then((response) => {
-          swal("Abgeschickt!", "Deine Nachricht wurde erfolgreich gesendet.", "success");
-          form.reset(); // Formular nach erfolgreichem Senden zurücksetzen
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => response.json()) // Antwort als JSON parsen
+        .then(data => {
+          console.log('Antwort vom Server:', data); // Für Debugging
+          if (data.result === 'success') {
+            swal('Abgeschickt!', data.message || 'Deine Nachricht wurde erfolgreich gesendet.', 'success');
+            form.reset();
+          } else {
+            // Zeige die spezifische Fehlermeldung vom Server, falls vorhanden
+            swal('Fehler', data.message || 'Etwas ist schiefgelaufen. Bitte versuche es erneut!', 'error');
+          }
         })
-        .catch((error) => {
-          swal("Fehler", "Etwas ist schiefgelaufen. Bitte versuche es erneut!", "error");
-          console.error("Error!", error.message);
+        .catch(error => {
+          console.error('Fetch-Fehler:', error);
+          swal('Netzwerkfehler', 'Die Anfrage konnte nicht gesendet werden. Bitte prüfe deine Internetverbindung oder versuche es später erneut.', 'error');
+        })
+        .finally(() => {
+          // Ladeindikator zurücksetzen
+          submitButton.disabled = false;
+          submitButton.textContent = originalButtonText;
         });
     });
   </script>
