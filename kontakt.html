@@ -52,10 +52,15 @@
         </p>
         <ul>
           <li><strong>Jugendleiter:</strong> Tim Winterstein</li>
-          <li id="email-container" style="display: none;">
+          <li id="email-container">
             <strong>E-Mail:</strong>
-            <!-- E-Mail-Adresse, die nach erfolgreichem CAPTCHA angezeigt wird -->
-            <span id="email-address">
+            <!-- reCAPTCHA-Box wird hier angezeigt, bevor der Nutzer es ausfüllt -->
+            <span id="captcha-container">
+              <div class="g-recaptcha" data-sitekey="6Lf8alMrAAAAABxmzBloUpWH334Vue_LKxZnnLEA"
+                data-callback="onCaptchaSuccess"></div>
+            </span>
+            <!-- E-Mail wird hier angezeigt, nachdem der Nutzer das reCAPTCHA erfolgreich abgeschlossen hat -->
+            <span id="email-address" style="display: none;">
               <a href="mailto:svd.jugendschach@gmail.com">svd.jugendschach@gmail.com</a>
             </span>
           </li>
@@ -70,11 +75,6 @@
         <!-- Leaflet Karte -->
         <div id="map" style="width: 100%; height: 400px;"></div>
 
-        <!-- reCAPTCHA -->
-        <div id="recaptcha-container" class="g-recaptcha" data-sitekey="6Lf8alMrAAAAABxmzBloUpWH334Vue_LKxZnnLEA"></div>
-
-        <!-- Button zum Überprüfen -->
-        <button id="verify-captcha" onclick="verifyCaptcha()">E-Mail anzeigen</button>
       </section>
     </div>
   </main>
@@ -111,16 +111,11 @@
     var marker = L.marker([48.52977, 9.3471], { icon: customIcon }).addTo(map);
     marker.bindPopup("<b>Schachverein Dettingen/Erms e.V.</b><br>Altes Rathaus (Großer Versammlungsraum)").openPopup();
 
-    // Funktion zum Überprüfen des reCAPTCHA und Anzeigen der E-Mail
-    function verifyCaptcha() {
-      var response = grecaptcha.getResponse();
-      if (response.length === 0) {
-        alert("Bitte bestätigen Sie, dass Sie kein Roboter sind.");
-      } else {
-        // reCAPTCHA ausblenden und E-Mail anzeigen
-        document.getElementById("recaptcha-container").style.display = "none";
-        document.getElementById("email-container").style.display = "block";
-      }
+    // Callback für reCAPTCHA
+    function onCaptchaSuccess() {
+      // reCAPTCHA ausblenden und E-Mail anzeigen
+      document.getElementById("captcha-container").style.display = "none";
+      document.getElementById("email-address").style.display = "inline";
     }
   </script>
 </body>
