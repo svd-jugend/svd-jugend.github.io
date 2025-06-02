@@ -36,14 +36,10 @@
       text-align: center;
     }
 
-    /* Optional: Etwas Abstand für das reCAPTCHA-Widget */
     .form-group-recaptcha {
       margin-bottom: 1.5rem;
-      /* Gleicher Abstand wie bei anderen form-groups */
       display: flex;
-      /* Um das reCAPTCHA-Widget bei Bedarf zentrieren zu können */
       justify-content: center;
-      /* Zentriert das Widget, wenn es schmaler als der Container ist */
     }
   </style>
 </head>
@@ -78,17 +74,13 @@
       <h1>Kontakt & Ansprechpartner</h1>
       <section id="contact-info">
         <h2>Schreib uns oder komm vorbei!</h2>
-        <p>
-          Hast du Fragen zu unserem Jugendtraining, möchtest du dich anmelden
-          oder einfach mal reinschnuppern? Wir freuen uns auf dich!
-        </p>
+        <!-- ... anderer Inhalt ... -->
         <ul>
           <li><strong>Jugendleiter:</strong> Tim Winterstein</li>
           <li id="email-container">
             <strong>E-Mail:</strong>
             <span id="captcha-container">
-              <!-- Dieses reCAPTCHA ist für die E-Mail-Anzeige -->
-              <div class="g-recaptcha" data-sitekey="6Lf8alMrAAAAABxmzBloUpWH334Vue_LKxZnnLEA"
+              <div id="recaptcha-email" class="g-recaptcha" data-sitekey="6Lf8alMrAAAAABxmzBloUpWH334Vue_LKxZnnLEA"
                 data-callback="onCaptchaSuccessEmail"></div>
             </span>
             <span id="email-address" style="display: none;">
@@ -102,12 +94,12 @@
           Altes Rathaus, Hülbener Straße 1<br />
           72581 Dettingen/Erms<br />
         </address>
-
         <div id="map" style="width: 100%; height: 400px;"></div>
 
         <div class="form-container">
           <h4 class="text-center">Kontaktiere uns direkt hier:</h4>
           <form id="submit-to-google-sheet">
+            <!-- ... Formularfelder ... -->
             <div class="form-group">
               <label for="name">Name:</label>
               <input class="form-control" type="text" name="name" id="name" placeholder="Dein Name" required />
@@ -123,10 +115,10 @@
                 placeholder="Deine Nachricht an uns" required></textarea>
             </div>
 
-            <!-- HIER DAS NEUE reCAPTCHA FÜR DAS FORMULAR -->
+            <!-- reCAPTCHA FÜR DAS FORMULAR mit expliziter ID -->
             <div class="form-group form-group-recaptcha">
-              <div class="g-recaptcha" data-sitekey="6Lf8alMrAAAAABxmzBloUpWH334Vue_LKxZnnLEA"></div>
-              <!-- ERSETZE data-sitekey ggf. mit deinem spezifischen Key für dieses Formular -->
+              <div id="recaptcha-form" class="g-recaptcha" data-sitekey="6Lf8alMrAAAAABxmzBloUpWH334Vue_LKxZnnLEA">
+              </div>
             </div>
 
             <button type="submit" class="btn btn-primary btn-block">
@@ -145,8 +137,8 @@
     </div>
   </footer>
 
-  <!-- Google reCAPTCHA API Script (wird nur einmal benötigt, auch wenn mehrere Widgets auf der Seite sind) -->
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <!-- Google reCAPTCHA API Script lädt die API -->
+  <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
 
   <!-- Leaflet JS (für Karte) -->
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
@@ -157,15 +149,37 @@
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
-    var customIcon = L.icon({
+    var customIcon = L.icon({ /* ... icon config ... */
       iconUrl: 'assets/logo_keintext.png', iconSize: [51, 51], iconAnchor: [25, 50],
       popupAnchor: [0, -50], shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png', shadowSize: [41, 41]
     });
     var marker = L.marker([48.52977, 9.3471], { icon: customIcon }).addTo(map);
     marker.bindPopup("<b>Schachverein Dettingen/Erms e.V.</b><br>Altes Rathaus (Großer Versammlungsraum)").openPopup();
 
-    // Callback für reCAPTCHA der E-Mail-Anzeige
-    function onCaptchaSuccessEmail() {
+    // Globale Variablen für Widget-IDs
+    var recaptchaEmailWidgetId;
+    var recaptchaFormWidgetId;
+
+    // Callback, der aufgerufen wird, wenn die reCAPTCHA-API geladen ist
+    var onloadCallback = function () {
+      // Rendere das reCAPTCHA für die E-Mail-Anzeige
+      if (document.getElementById('recaptcha-email')) {
+        recaptchaEmailWidgetId = grecaptcha.render('recaptcha-email', {
+          'sitekey': '6Lf8alMrAAAAABxmzBloUpWH334Vue_LKxZnnLEA', // Dein Site Key
+          'callback': onCaptchaSuccessEmail
+        });
+      }
+      // Rendere das reCAPTCHA für das Formular
+      if (document.getElementById('recaptcha-form')) {
+        recaptchaFormWidgetId = grecaptcha.render('recaptcha-form', {
+          'sitekey': '6Lf8alMrAAAAABxmzBloUpWH334Vue_LKxZnnLEA' // Dein Site Key
+          // Kein expliziter Callback hier nötig, wir prüfen on submit
+        });
+      }
+    };
+
+    function onCaptchaSuccessEmail(token) { // token wird übergeben, aber nicht direkt genutzt in dieser Funktion
+      console.log("Email reCAPTCHA gelöst, Token: ", token);
       document.getElementById("captcha-container").style.display = "none";
       document.getElementById("email-address").style.display = "inline";
     }
@@ -179,9 +193,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
 
-  <!-- JavaScript für das Kontaktformular (mit reCAPTCHA-Prüfung) -->
+  <!-- JavaScript für das Kontaktformular (mit expliziter reCAPTCHA-Widget-ID-Prüfung) -->
   <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbw0HUgTyVAHoTYpFuQtT_nxdrBnaQ60HOoEi_MOu_T5fOx_JYl59_YwP5Yyz-s7sWi0cA/exec'; // DEINE APPS SCRIPT URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw0HUgTyVAHoTYpFuQtT_nxdrBnaQ60HOoEi_MOu_T5fOx_JYl59_YwP5Yyz-s7sWi0cA/exec';
     const form = document.forms['submit-to-google-sheet'];
     const primaryButtonColor = '#a6292d';
 
@@ -190,10 +204,21 @@
       const submitButton = form.querySelector('button[type="submit"]');
       const originalButtonText = submitButton.textContent;
 
-      // reCAPTCHA-Prüfung
-      const recaptchaResponse = grecaptcha.getResponse(); // Holt den Response-Token vom reCAPTCHA-Widget im Formular
+      // reCAPTCHA-Prüfung mit expliziter Widget-ID
+      // Stelle sicher, dass recaptchaFormWidgetId definiert ist, bevor du darauf zugreifst
+      if (typeof recaptchaFormWidgetId === 'undefined') {
+        console.error("Formular reCAPTCHA Widget ID ist nicht definiert. Wurde onloadCallback korrekt ausgeführt?");
+        swal({
+          title: 'Fehler',
+          text: 'Das reCAPTCHA konnte nicht initialisiert werden. Bitte lade die Seite neu.',
+          type: 'error',
+          confirmButtonColor: primaryButtonColor
+        });
+        return;
+      }
+
+      const recaptchaResponse = grecaptcha.getResponse(recaptchaFormWidgetId);
       if (recaptchaResponse.length === 0) {
-        // reCAPTCHA wurde nicht gelöst
         swal({
           title: 'Bitte bestätigen',
           text: 'Bitte bestätige, dass du kein Roboter bist, indem du das reCAPTCHA löst.',
@@ -201,18 +226,15 @@
           confirmButtonColor: primaryButtonColor,
           confirmButtonText: 'OK'
         });
-        // Wichtig: Button nicht dauerhaft deaktiviert lassen
-        // Der Button wird erst bei erfolgreicher Prüfung deaktiviert.
-        return; // Stoppt die weitere Ausführung
+        return;
       }
 
-      // Wenn reCAPTCHA gelöst wurde, deaktiviere Button und fahre fort
       submitButton.disabled = true;
       submitButton.textContent = 'Sende...';
       const formData = new FormData(form);
 
       fetch(scriptURL, { method: 'POST', body: formData })
-        .then(response => {
+        .then(response => { /* ... dein fetch response handling ... */
           if (response.ok) {
             return response.json().then(data => {
               console.log('Antwort vom Server (wenn CORS OK wäre):', data);
@@ -226,11 +248,11 @@
             return { success: true, message: `Nachricht wurde gesendet!` };
           }
         })
-        .catch(error => {
+        .catch(error => { /* ... dein fetch catch handling ... */
           console.warn('Fetch-Fehler (oft CORS-bedingt, aber Annahme von Erfolg):', error);
           return { success: true, message: 'Nachricht wurde gesendet!' };
         })
-        .then(result => {
+        .then(result => { /* ... dein fetch then handling ... */
           swal({
             title: 'Abgeschickt!',
             text: result.messageFromServer || result.message || 'Deine Nachricht wurde übermittelt und das Formular wird zurückgesetzt.',
@@ -239,9 +261,12 @@
             confirmButtonText: 'OK'
           });
           form.reset();
-          grecaptcha.reset(); // Setzt das reCAPTCHA-Widget im Formular zurück
+          // Setze das spezifische Formular-reCAPTCHA zurück
+          if (typeof recaptchaFormWidgetId !== 'undefined') {
+            grecaptcha.reset(recaptchaFormWidgetId);
+          }
         })
-        .finally(() => {
+        .finally(() => { /* ... dein fetch finally handling ... */
           submitButton.disabled = false;
           submitButton.textContent = originalButtonText;
         });
