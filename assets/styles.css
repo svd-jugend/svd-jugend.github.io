@@ -770,47 +770,44 @@ footer {
   #contact-form-info .form-group textarea {
     width: 100%;
   }
+  .form-container > h4.text-center {
+    /* Zielt auf das h4-Element mit der Klasse text-center, das ein direktes Kind von .form-container ist */
+    font-family: var(--font-secondary);
+    font-size: 2.2rem;
+    color: var(--color-primary);
+    font-weight: 700;
+    /* text-align: center; kommt von der .text-center Klasse */
+    margin-top: 0;
+    margin-bottom: 2rem; /* Anpassen nach Bedarf */
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-secondary);
+    line-height: 1.2;
+  }
+
   .form-container .form-group label {
     font-weight: 600;
     color: var(--color-primary);
-    display: block;
-    margin-bottom: 0.5rem;
+    /* display: block; (Bootstrap sollte das schon machen) */
+    margin-bottom: 0.5rem; /* Standard Bootstrap-Abstand */
+    font-size: 1rem; /* Standard Bootstrap-Größe */
+  }
+}
+
+@media (max-width: 768px) {
+  #contact-form-info {
+    padding: 1.5rem;
+  }
+
+  #contact-form-info h2 {
+    font-size: 1.5rem;
+  }
+
+  #contact-form-info label {
     font-size: 1rem;
   }
 
-  .form-container > h4 { /* Selektiert direktes Kind h4 von .form-container */
-    font-family: var(--font-secondary); /* Roboto */
-    font-size: 2.2rem; /* Wie H1 */
-    color: var(--color-primary); /* Wie H1 */
-    text-align: center; /* Ist schon durch .text-center Klasse im HTML, aber hier zur Sicherheit */
-    
-    /* Anpassung von margin und padding, um der H1-Ästhetik näher zu kommen,
-       aber vielleicht nicht ganz so viel Abstand wie eine Hauptseiten-H1.
-       Der ursprüngliche h4-margin-bottom war 1.5rem.
-       Der ursprüngliche H1-margin-bottom war 2.5rem.
-       Wir können einen Wert dazwischen oder den H1-Wert nehmen.
-    */
-    margin-top: 0; /* Standard-h4 könnte margin-top haben, hier ggf. zurücksetzen */
-    margin-bottom: 2rem; /* Etwas weniger als die Haupt-H1, aber mehr als Standard-h4 */
-    padding-bottom: 0.75rem; /* Wie H1 */
-    border-bottom: 2px solid var(--color-secondary); /* Gelbe Unterstreichung wie H1 */
-
-  @media (max-width: 768px) {
-    #contact-form-info {
-      padding: 1.5rem;
-    }
-
-    #contact-form-info h2 {
-      font-size: 1.5rem;
-    }
-
-    #contact-form-info label {
-      font-size: 1rem;
-    }
-
-    #contact-form-info button {
-      font-size: 1rem;
-      padding: 0.75rem 1.5rem;
-    }
+  #contact-form-info button {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
   }
 }
