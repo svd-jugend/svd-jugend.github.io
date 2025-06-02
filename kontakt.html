@@ -27,56 +27,30 @@
   <!-- Deine globalen Styles (assets/styles.css) -->
   <link rel="stylesheet" href="assets/styles.css" />
 
-  <!-- Inline Styles für spezifische Anpassungen dieser Seite, falls nötig oder um Bootstrap zu überschreiben -->
+  <!-- Inline Styles -->
   <style>
-    /* Spezifische Anpassungen für den Senden-Button im Kontaktformular,
-       um sicherzustellen, dass er die globalen .btn und .btn-primary Styles verwendet
-       und Bootstrap-Defaults überschreibt, FALLS NÖTIG.
-       Oft reicht es, wenn assets/styles.css nach Bootstrap geladen wird.
-       Diese Regeln hier sind für den Fall, dass es nicht ausreicht oder für Feinabstimmung.
-    */
     .form-container form button[type="submit"].btn.btn-primary {
-      /* Übernimmt die meisten Stile von .btn und .btn-primary aus assets/styles.css
-         Hier können spezifische Überschreibungen oder Ergänzungen erfolgen. */
-
-      /* Wenn 'btn-block' im HTML verwendet wird, sind display: block und width: 100% von Bootstrap.
-         Falls nicht, und du willst volle Breite, füge hinzu:
-         display: block;
-         width: 100%;
-      */
       margin-top: 1.5rem;
-      /* Eigener Abstand für den Formular-Button */
-      /* Sicherstellen, dass die Schriftgröße und das Padding konsistent sind */
       font-size: 1rem;
-      /* Wie in .btn definiert */
       padding: 0.75rem 1.5rem;
-      /* Wie in .btn definiert */
       text-align: center;
     }
 
-    /* Hover- und Disabled-Zustände sollten von den globalen .btn-primary:hover
-       und ggf. .btn:disabled Styles aus assets/styles.css übernommen werden.
-       Falls nicht, hier explizit definieren:
-    */
-    /*
-    .form-container form button[type="submit"].btn.btn-primary:hover {
-      background-color: #8c2226; // var(--color-primary-darker) falls definiert
-      transform: translateY(-2px);
-      color: white;
+    /* Optional: Etwas Abstand für das reCAPTCHA-Widget */
+    .form-group-recaptcha {
+      margin-bottom: 1.5rem;
+      /* Gleicher Abstand wie bei anderen form-groups */
+      display: flex;
+      /* Um das reCAPTCHA-Widget bei Bedarf zentrieren zu können */
+      justify-content: center;
+      /* Zentriert das Widget, wenn es schmaler als der Container ist */
     }
-
-    .form-container form button[type="submit"].btn.btn-primary:disabled {
-      background-color: var(--color-accent);
-      color: var(--color-light-gray);
-      cursor: not-allowed;
-      transform: none;
-    }
-    */
   </style>
 </head>
 
 <body>
   <header class="site-header-custom">
+    <!-- ... dein Header-Inhalt ... -->
     <div class="container header-custom-content">
       <div class="logo-container-custom">
         <img src="assets/logo.png" alt="Schachclub Dettingen/Erms Logo" class="logo-custom" />
@@ -113,8 +87,9 @@
           <li id="email-container">
             <strong>E-Mail:</strong>
             <span id="captcha-container">
+              <!-- Dieses reCAPTCHA ist für die E-Mail-Anzeige -->
               <div class="g-recaptcha" data-sitekey="6Lf8alMrAAAAABxmzBloUpWH334Vue_LKxZnnLEA"
-                data-callback="onCaptchaSuccess"></div>
+                data-callback="onCaptchaSuccessEmail"></div>
             </span>
             <span id="email-address" style="display: none;">
               <a href="mailto:svd.jugendschach@gmail.com">svd.jugendschach@gmail.com</a>
@@ -130,7 +105,6 @@
 
         <div id="map" style="width: 100%; height: 400px;"></div>
 
-        <!-- Das Bootstrap-Formular mit den globalen Button-Klassen -->
         <div class="form-container">
           <h4 class="text-center">Kontaktiere uns direkt hier:</h4>
           <form id="submit-to-google-sheet">
@@ -148,9 +122,13 @@
               <textarea class="form-control" name="nachricht" id="nachricht" rows="5"
                 placeholder="Deine Nachricht an uns" required></textarea>
             </div>
-            <!-- Der Button verwendet jetzt die globalen Klassen .btn und .btn-primary.
-                 'btn-block' von Bootstrap für volle Breite kann beibehalten oder entfernt werden,
-                 je nachdem, ob die globalen .btn Styles das bereits abdecken oder nicht. -->
+
+            <!-- HIER DAS NEUE reCAPTCHA FÜR DAS FORMULAR -->
+            <div class="form-group form-group-recaptcha">
+              <div class="g-recaptcha" data-sitekey="6Lf8alMrAAAAABxmzBloUpWH334Vue_LKxZnnLEA"></div>
+              <!-- ERSETZE data-sitekey ggf. mit deinem spezifischen Key für dieses Formular -->
+            </div>
+
             <button type="submit" class="btn btn-primary btn-block">
               Senden
             </button>
@@ -161,39 +139,33 @@
   </main>
 
   <footer>
+    <!-- ... dein Footer-Inhalt ... -->
     <div class="container">
       <p>© <span id="currentYear"></span> Schachclub SV Dettingen/Erms Jugend</p>
     </div>
   </footer>
 
-  <!-- Google reCAPTCHA API Script -->
+  <!-- Google reCAPTCHA API Script (wird nur einmal benötigt, auch wenn mehrere Widgets auf der Seite sind) -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
   <!-- Leaflet JS (für Karte) -->
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-  <!-- JavaScript für Karte, reCAPTCHA und Footer -->
+  <!-- JavaScript für Karte, reCAPTCHA für E-Mail und Footer -->
   <script>
-    // Karte initialisieren
     var map = L.map('map').setView([48.52977, 9.3471], 17);
-
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
-
     var customIcon = L.icon({
-      iconUrl: 'assets/logo_keintext.png',
-      iconSize: [51, 51],
-      iconAnchor: [25, 50],
-      popupAnchor: [0, -50],
-      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-      shadowSize: [41, 41]
+      iconUrl: 'assets/logo_keintext.png', iconSize: [51, 51], iconAnchor: [25, 50],
+      popupAnchor: [0, -50], shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png', shadowSize: [41, 41]
     });
-
     var marker = L.marker([48.52977, 9.3471], { icon: customIcon }).addTo(map);
     marker.bindPopup("<b>Schachverein Dettingen/Erms e.V.</b><br>Altes Rathaus (Großer Versammlungsraum)").openPopup();
 
-    function onCaptchaSuccess() {
+    // Callback für reCAPTCHA der E-Mail-Anzeige
+    function onCaptchaSuccessEmail() {
       document.getElementById("captcha-container").style.display = "none";
       document.getElementById("email-address").style.display = "inline";
     }
@@ -201,25 +173,42 @@
     document.getElementById('currentYear').textContent = new Date().getFullYear();
   </script>
 
-  <!-- JavaScript-Bibliotheken für das Kontaktformular-Popups und Bootstrap-Komponenten (falls genutzt) -->
+  <!-- JavaScript-Bibliotheken für das Kontaktformular-Popups und Bootstrap-Komponenten -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
 
-  <!-- JavaScript für das Kontaktformular (optimistischer Ansatz) -->
+  <!-- JavaScript für das Kontaktformular (mit reCAPTCHA-Prüfung) -->
   <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbw0HUgTyVAHoTYpFuQtT_nxdrBnaQ60HOoEi_MOu_T5fOx_JYl59_YwP5Yyz-s7sWi0cA/exec'; // ERSETZE DIES MIT DEINER AKTUELLEN APPS SCRIPT URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw0HUgTyVAHoTYpFuQtT_nxdrBnaQ60HOoEi_MOu_T5fOx_JYl59_YwP5Yyz-s7sWi0cA/exec'; // DEINE APPS SCRIPT URL
     const form = document.forms['submit-to-google-sheet'];
-    const primaryButtonColor = '#a6292d'; // Deine Primärfarbe hier direkt als Hex-Wert
+    const primaryButtonColor = '#a6292d';
 
     form.addEventListener('submit', e => {
       e.preventDefault();
       const submitButton = form.querySelector('button[type="submit"]');
       const originalButtonText = submitButton.textContent;
+
+      // reCAPTCHA-Prüfung
+      const recaptchaResponse = grecaptcha.getResponse(); // Holt den Response-Token vom reCAPTCHA-Widget im Formular
+      if (recaptchaResponse.length === 0) {
+        // reCAPTCHA wurde nicht gelöst
+        swal({
+          title: 'Bitte bestätigen',
+          text: 'Bitte bestätige, dass du kein Roboter bist, indem du das reCAPTCHA löst.',
+          type: 'warning',
+          confirmButtonColor: primaryButtonColor,
+          confirmButtonText: 'OK'
+        });
+        // Wichtig: Button nicht dauerhaft deaktiviert lassen
+        // Der Button wird erst bei erfolgreicher Prüfung deaktiviert.
+        return; // Stoppt die weitere Ausführung
+      }
+
+      // Wenn reCAPTCHA gelöst wurde, deaktiviere Button und fahre fort
       submitButton.disabled = true;
       submitButton.textContent = 'Sende...';
-
       const formData = new FormData(form);
 
       fetch(scriptURL, { method: 'POST', body: formData })
@@ -242,15 +231,15 @@
           return { success: true, message: 'Nachricht wurde gesendet!' };
         })
         .then(result => {
-          // SweetAlert2 Konfiguration
-          swal({ // Beachte: swal() statt swal direkt als Funktion bei älteren SweetAlert2 Versionen
+          swal({
             title: 'Abgeschickt!',
             text: result.messageFromServer || result.message || 'Deine Nachricht wurde übermittelt und das Formular wird zurückgesetzt.',
-            type: 'success', // 'type' statt 'icon' bei SweetAlert2 v7.x
-            confirmButtonColor: primaryButtonColor, // Hier wird die Button-Farbe gesetzt
+            type: 'success',
+            confirmButtonColor: primaryButtonColor,
             confirmButtonText: 'OK'
           });
           form.reset();
+          grecaptcha.reset(); // Setzt das reCAPTCHA-Widget im Formular zurück
         })
         .finally(() => {
           submitButton.disabled = false;
