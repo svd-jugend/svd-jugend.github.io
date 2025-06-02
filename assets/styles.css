@@ -10,7 +10,7 @@
 :root {
   --color-primary: #a6292d; /* Dunkelrot vom Logo */
   --color-secondary: #fddc61; /* Gelb/Gold vom Logo */
-  --color-accent: #808080; /* Grau vom Logo */
+  --color-accent: #3C3C3C; /* Grau vom Logo, abgedunkelt für besseren Kontrast */
   --color-text: #333333;
   --color-background: #ffffff;
   --color-light-gray: #f4f4f4;
@@ -216,7 +216,7 @@ main {
 .btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  text-decoration: none !important;
+  text-decoration: none;
   border-radius: 5px;
   font-weight: bold;
   transition: background-color 0.3s ease, transform 0.2s ease;
@@ -226,7 +226,7 @@ main {
   margin-top: auto; /* Sorgt dafür, dass Buttons in Flex-Containern wie .feature-card unten bleiben */
 }
 .btn:hover {
-  text-decoration: none !important;
+  text-decoration: none;
 }
 .btn-primary {
   background-color: var(--color-primary);
@@ -272,7 +272,7 @@ main {
 }
 .cta-section .btn,
 .cta-section .btn:hover {
-  text-decoration: none !important;
+  text-decoration: none;
 }
 
 /* QR Codes */
@@ -394,7 +394,7 @@ main section a:hover {
 }
 main section .btn a,
 main section .btn a:hover {
-  text-decoration: none !important;
+  text-decoration: none;
 } /* Sicherstellen, dass Links in Buttons nicht unterstrichen werden */
 address {
   font-style: normal;
@@ -811,3 +811,76 @@ footer {
     padding: 0.75rem 1.5rem;
   }
 }
+
+/* Styles moved from kontakt.html inline <style> block */
+    /* Bestehende Inline-Styles, die funktionieren */
+    .form-container form button[type="submit"].btn.btn-primary {
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      padding: 0.75rem 1.5rem;
+      text-align: center;
+      /* Die folgenden könnten von deinen globalen .btn .btn-primary Styles kommen,
+           aber zur Sicherheit hier, falls Bootstrap sie stark überschreibt. */
+      background-color: var(--color-primary);
+      color: white;
+      border: none;
+      /* Wichtig, um Bootstrap-Ränder zu entfernen, falls vorhanden */
+      font-weight: bold;
+      /* Von .btn */
+      border-radius: 5px;
+      /* Von .btn */
+    }
+
+    /* Hover-Zustand explizit für den Formular-Button, um Bootstrap zu überschreiben */
+    .form-container form button[type="submit"].btn.btn-primary:hover {
+      background-color: #8c2226;
+      /* Dein dunkleres Rot */
+      transform: translateY(-2px);
+    }
+
+    .form-container form button[type="submit"].btn.btn-primary:disabled {
+      background-color: var(--color-accent);
+      color: var(--color-light-gray);
+      cursor: not-allowed;
+      transform: none;
+    }
+
+
+    .form-group-recaptcha {
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* === ANGEPASSTE REGELN FÜR H4 UND LABELS === */
+    /* Wir erhöhen die Spezifität leicht, indem wir die ID des Elternelements der Sektion nutzen.
+         Wenn deine <section> eine ID hat, z.B. id="contact-info", dann: */
+    /* #contact-info .form-container > h4.text-center { */
+    /* Wenn nicht, bleiben wir bei diesem Selektor und hoffen, dass er reicht. */
+    .form-container>h4.text-center {
+      font-family: var(--font-secondary);
+      font-size: 2.2rem;
+      color: var(--color-primary);
+      /* Diese Farbe sollte jetzt greifen */
+      font-weight: 700;
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 2rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--color-secondary);
+      line-height: 1.2;
+      /* background-color: yellow !important; ENTFERNT */
+    }
+
+    /* #contact-info .form-container .form-group label { */
+    .form-container .form-group label {
+      font-weight: 600;
+      color: var(--color-primary);
+      /* Diese Farbe sollte jetzt greifen */
+      display: block;
+      /* Wichtig, damit margin-bottom wirkt und das Label über dem Input steht */
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      /* background-color: cyan !important; ENTFERNT */
+    }
+/* End of styles moved from kontakt.html */
