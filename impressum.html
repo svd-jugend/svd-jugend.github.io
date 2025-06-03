@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Impressum - SV Dettingen/Erms Jugend</title>
+    <meta name="description" content="Impressum der Jugendabteilung des Schachclubs SV Dettingen/Erms e.V." />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        /* Spezifische Stile für das Impressum, falls globale nicht ausreichen */
+        #impressum-content dt {
+            /* Definitions-Titel */
+            font-weight: 600;
+            /* Wie dein globaler strong-Stil */
+            color: var(--color-primary);
+            /* Primärfarbe */
+            margin-top: 1rem;
+            /* Etwas Abstand vor einem neuen Begriff */
+        }
+
+        #impressum-content dd {
+            /* Definitions-Beschreibung */
+            margin-left: 0;
+            /* Standard-Einzug von dl/dd entfernen, wenn nicht gewünscht */
+            margin-bottom: 0.5rem;
+            padding-left: 1.5em;
+            /* Eigener Einzug, um Platz für ::before zu schaffen */
+            position: relative;
+        }
+
+        #impressum-content dd::before {
+            /* Schachfigur für dd-Elemente */
+            content: ">";
+            color: var(--color-secondary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0.05em;
+            /* Feinabstimmung der vertikalen Position */
+        }
+
+        #impressum-content .sub-heading {
+            /* Für die <strong>-Überschriften im Disclaimer */
+            display: block;
+            font-family: var(--font-secondary);
+            font-size: 1.3rem;
+            /* Etwas kleiner als H3 */
+            color: var(--color-text);
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        #impressum-content .generator-hinweis {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--color-light-gray);
+            font-size: 0.85rem;
+            text-align: center;
+            color: var(--color-accent);
+        }
+
+        #impressum-content .generator-hinweis a {
+            color: var(--color-accent);
+            text-decoration: underline;
+            font-weight: normal;
+            /* Überschreibt ggf. main section a font-weight */
+        }
+
+        #impressum-content .generator-hinweis a:hover {
+            color: var(--color-primary);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header-custom">
+        <!-- ... Dein Header ... -->
+        <div class="container header-custom-content">
+            <div class="logo-container-custom">
+                <img src="assets/logo.png" alt="Schachclub Dettingen/Erms Logo" class="logo-custom" />
+            </div>
+            <div class="header-main-content-custom">
+                <div class="welcome-text-block-custom">
+                    <h1>Willkommen bei der Jugendabteilung</h1>
+                    <p class="subtitle-custom">des SV Dettingen/Erms e.V.</p>
+                </div>
+                <nav class="navigation-custom">
+                    <ul>
+                        <li><a href="index.html">Startseite</a></li>
+                        <li><a href="training.html">Training</a></li>
+                        <li><a href="ueber_uns.html">Über Uns</a></li>
+                        <li><a href="warumschach.html">Warum Schach?</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                        <!-- <li><a href="impressum.html" class="active">Impressum</a></li> -->
+                        <!-- <li><a href="datenschutz.html">Datenschutz</a></li> -->
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Impressum</h1>
+
+            <div id="impressum-content"> <!-- Wrapper für spezifisches Styling -->
+                <section>
+                    <h2>Angaben gemäß § 5 DDG (ehemals TMG)</h2>
+                    <p>
+                        <!-- HIER DIE KORREKTEN DATEN FÜR DEN SV DETTINGEN/ERMS JUGEND EINTRAGEN -->
+                        <strong>SV Dettingen/Erms e.V.</strong><br />
+                        Jugendabteilung Schach<br />
+                        [Straße Hausnummer des Vereins]<br />
+                        [PLZ Ort des Vereins]
+                    </p>
+
+                    <dl> <!-- Definitionsliste für strukturierte Angaben -->
+                        <dt>Vertreten durch (Vorstand des Hauptvereins):</dt>
+                        <dd>[Max Mustermann - 1. Vorsitzender]</dd>
+                        <dd>[Erika Musterfrau - 2. Vorsitzende]</dd>
+                        <!-- Weitere Vorstandsmitglieder -->
+
+                        <dt>Ansprechpartner Jugendabteilung Schach:</dt>
+                        <dd>Tim Winterstein (Jugendleiter)</dd>
+                        <!-- Ggf. c/o Vereinsanschrift oder eigene, falls relevant -->
+
+                        <dt>Kontakt (Jugendabteilung):</dt>
+                        <dd>E-Mail: <a href='mailto:svd.jugendschach@gmail.com'>svd.jugendschach@gmail.com</a></dd>
+                        <!-- Ggf. Telefon Jugend hier, sonst allgemeine Vereinsnummer -->
+
+                        <dt>Kontakt (Hauptverein):</dt>
+                        <dd>Telefon: [Telefon Hauptverein]</dd>
+                        <dd>Fax: [Fax Hauptverein, falls vorhanden]</dd>
+                        <dd>E-Mail: [E-Mail Hauptverein]</dd>
+
+                        <dt>Registereintrag:</dt>
+                        <dd>Eintragung im Vereinsregister</dd>
+                        <dd>Registergericht: [Amtsgericht Musterstadt]</dd>
+                        <dd>Registernummer: [VR 12345]</dd>
+
+                        <dt>Umsatzsteuer-ID:</dt>
+                        <dd>
+                            <!-- Umsatzsteuer-Identifikationsnummer gemäß §27a Umsatzsteuergesetz: [Musterustid.]<br> -->
+                            <em>Hinweis: Klären, ob für Ihren Verein eine USt-IdNr. erforderlich ist. Oft bei
+                                gemeinnützigen Vereinen nicht der Fall. Falls nicht, diesen Punkt weglassen oder "Nicht
+                                vorhanden" schreiben.</em>
+                        </dd>
+
+                        <!-- Wirtschafts-ID ist meist nicht relevant für Vereine, ggf. entfernen -->
+                        <!--
+            <dt>Wirtschafts-ID:</dt>
+            <dd>[Musterwirtschaftsid]</dd>
+            -->
+
+                        <!-- Aufsichtsbehörde ist nur relevant, wenn der Verein einer spezifischen Aufsicht unterliegt (selten bei Sportvereinen) -->
+                        <!--
+            <dt>Aufsichtsbehörde:</dt>
+            <dd>[Musteraufsicht Musterstadt]</dd>
+            -->
+                    </dl>
+                </section>
+
+                <section>
+                    <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</h2>
+                    <p>
+                        Tim Winterstein<br>
+                        [Anschrift Tim Winterstein, ODER: c/o SV Dettingen/Erms e.V., Vereinsanschrift]<br>
+                        [PLZ Ort]
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Haftungsausschluss (Disclaimer)</h2>
+
+                    <p><strong class="sub-heading">Haftung für Inhalte</strong></p>
+                    <p>
+                        Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit,
+                        Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als
+                        Diensteanbieter sind wir gemäß § 7 Abs.1 DDG für eigene Inhalte auf diesen Seiten nach den
+                        allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch
+                        nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach
+                        Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur
+                        Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben
+                        hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis
+                        einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden
+                        Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+                    </p>
+
+                    <p><strong class="sub-heading">Haftung für Links</strong></p>
+                    <p>
+                        Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss
+                        haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die
+                        Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten
+                        verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche
+                        Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht
+                        erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete
+                        Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen
+                        werden wir derartige Links umgehend entfernen.
+                    </p>
+
+                    <p><strong class="sub-heading">Urheberrecht</strong></p>
+                    <p>
+                        Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem
+                        deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der
+                        Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des
+                        jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten,
+                        nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber
+                        erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter
+                        als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam
+                        werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen
+                        werden wir derartige Inhalte umgehend entfernen.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Hinweis zur Online-Streitbeilegung</h2>
+                    <p>
+                        Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit, die Sie
+                        unter <a href="https://ec.europa.eu/consumers/odr/" target="_blank"
+                            rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a> finden.
+                        Unsere E-Mail-Adresse finden Sie oben im Impressum bzw. bei den Kontaktdaten.
+                    </p>
+                    <p>
+                        Wir sind zur Teilnahme an einem Streitbeilegungsverfahren vor einer
+                        Verbraucherschlichtungsstelle weder verpflichtet noch bereit.
+                        <em>(Diese Formulierung ist üblich, bitte für euren Verein prüfen.)</em>
+                    </p>
+                </section>
+
+                <!-- Die Abschnitte zu Datenschutz, Google Analytics und AdSense gehören primär in die Datenschutzerklärung,
+             nicht ins Impressum. Wenn sie dort schon stehen, können sie hier entfernt oder stark gekürzt werden.
+             Ich lasse sie hier vorerst aus, da wir eine separate, ausführliche Datenschutzerklärung haben. -->
+
+                <section>
+                    <p class="generator-hinweis">
+                        <!-- Der Generator-Hinweis kann hier stehen bleiben, wenn gewünscht und die Quelle korrekt ist -->
+                        Impressum teilweise erstellt mit dem <a href="https://impressum-generator.de"
+                            rel="nofollow">Impressum-Generator</a> von WebsiteWissen.com.
+                        Rechtstexte ggf. angepasst und ergänzt. Keine Rechtsberatung.
+                    </p>
+                </section>
+            </div><!-- Ende #impressum-content -->
+        </div><!-- Ende .container -->
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>
+                © <span id="currentYear"></span> Schachclub SV Dettingen/Erms Jugend
+                | <a href="impressum.html" class="active"
+                    style="color: var(--color-light-gray); text-decoration: underline;">Impressum</a>
+                | <a href="datenschutz.html"
+                    style="color: var(--color-light-gray); text-decoration: underline;">Datenschutz</a>
+            </p>
+        </div>
+    </footer>
+    <script>
+        if (document.getElementById('currentYear')) {
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        }
+        // Füge .active Klasse zum richtigen Navigationslink hinzu
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.navigation-custom ul li a');
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+                if (currentPage === 'impressum.html' && link.getAttribute('href') === 'impressum.html') { // Spezifisch für diese Seite
+                    // Keine extra Klasse nötig, wenn der Link schon "active" ist
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
