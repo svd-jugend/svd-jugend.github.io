@@ -1,6 +1,12 @@
+import { Helmet } from 'react-helmet-async';
+
 function WhyChess() {
   return (
     <div className="container">
+      <Helmet>
+        <title>Warum Schach? - SV Dettingen/Erms Jugend</title>
+        <meta name="description" content="Erfahre, warum Schach mehr als nur ein Spiel ist und welche Vorteile es für Kinder und Jugendliche bietet." />
+      </Helmet>
       <h1>Warum Schach? Die Vorteile des königlichen Spiels</h1>
       <section id="schach-erklaerung">
         <h2>Mehr als nur ein Spiel</h2>

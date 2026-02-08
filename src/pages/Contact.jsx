@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Helmet } from 'react-helmet-async';
 import L from 'leaflet';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Swal from 'sweetalert2';
@@ -95,6 +96,10 @@ function Contact() {
 
   return (
     <div className="container">
+      <Helmet>
+        <title>Kontakt - SV Dettingen/Erms Jugend</title>
+        <meta name="description" content="Kontaktiere uns per E-Mail, Telefon oder besuche uns direkt in unserem Trainingslokal." />
+      </Helmet>
       <h1>Kontakt & Ansprechpartner</h1>
       <section id="contact-info">
         <h2>Schreib uns oder komm vorbei!</h2>
@@ -161,7 +166,7 @@ function Contact() {
               />
             </div>
 
-            <button type="submit" className="btn btn-primary btn-block" disabled={isSubmitting}>
+            <button type="submit" className="btn btn-primary w-100" disabled={isSubmitting}>
               {isSubmitting ? 'Sende...' : 'Senden'}
             </button>
           </form>

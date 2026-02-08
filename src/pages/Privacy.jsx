@@ -1,8 +1,13 @@
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 function Privacy() {
   return (
     <div className="container">
+      <Helmet>
+        <title>Datenschutz - SV Dettingen/Erms Jugend</title>
+        <meta name="robots" content="noindex" />
+      </Helmet>
       <h1>Datenschutzerklärung</h1>
 
       <div id="datenschutz-content">

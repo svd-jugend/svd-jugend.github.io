@@ -1,6 +1,12 @@
+import { Helmet } from 'react-helmet-async';
+
 function Imprint() {
   return (
     <div className="container">
+      <Helmet>
+        <title>Impressum - SV Dettingen/Erms Jugend</title>
+        <meta name="robots" content="noindex" />
+      </Helmet>
       <h1>Impressum</h1>
 
       <div id="impressum-content">

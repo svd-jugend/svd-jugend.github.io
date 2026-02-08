@@ -1,8 +1,13 @@
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 function Training() {
   return (
     <div className="container">
+      <Helmet>
+        <title>Training - SV Dettingen/Erms Jugend</title>
+        <meta name="description" content="Informiere dich über unsere Trainingszeiten und Inhalte für Kinder und Jugendliche." />
+      </Helmet>
       <h1>Trainingszeiten & Ort</h1>
       <section id="wann-und-wo">
         <h2>Wann und Wo findet unser Training statt?</h2>

@@ -1,8 +1,13 @@
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 function Home() {
   return (
     <div className="container">
+      <Helmet>
+        <title>Startseite - SV Dettingen/Erms Jugend</title>
+        <meta name="description" content="Willkommen bei der Jugendabteilung des SV Dettingen/Erms e.V. Entdecke die Welt des Schachs mit uns." />
+      </Helmet>
       <section className="hero-intro">
         <h2>Schön, dass du hier bist!</h2>
         <p>

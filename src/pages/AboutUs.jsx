@@ -1,6 +1,12 @@
+import { Helmet } from 'react-helmet-async';
+
 function AboutUs() {
   return (
     <div className="container">
+      <Helmet>
+        <title>Über Uns - SV Dettingen/Erms Jugend</title>
+        <meta name="description" content="Lerne unsere Jugendabteilung, unsere Philosophie und unsere Trainer kennen." />
+      </Helmet>
       <h1>Wer wir sind – Die Schachjugend des SV Dettingen/Erms</h1>
       <section id="philosophy">
         <h2>Unsere Philosophie: Schach macht Spaß!</h2>
