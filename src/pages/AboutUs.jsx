@@ -1,48 +1,12 @@
-<!DOCTYPE html>
-<html lang="de">
+import { Helmet } from 'react-helmet-async';
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SV Dettingen/Erms Jugend</title>
-  <link rel="stylesheet" href="assets/styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
-    rel="stylesheet" />
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-</head>
-
-<body>
-  <header class="site-header-custom">
-    <div class="container header-custom-content">
-      <div class="logo-container-custom">
-        <img src="assets/logo.png" alt="Schachclub Dettingen/Erms Logo" class="logo-custom" />
-      </div>
-      <div class="header-main-content-custom">
-        <div class="welcome-text-block-custom">
-          <!-- Neuer Wrapper für H1 und P -->
-          <h1>Willkommen bei der Jugendabteilung
-            <p class="subtitle-custom">des SV Dettingen/Erms e.V.
-          </h1>
-        </div>
-        <nav class="navigation-custom">
-          <ul>
-            <li><a href="index.html">Startseite</a></li>
-            <li><a href="training.html">Training</a></li>
-            <li><a href="ueber_uns.html" class="active">Über Uns</a></li>
-            <li><a href="warumschach.html">Warum Schach?</a></li>
-            <li><a href="kontakt.html">Kontakt</a></li>
-            <li><a href="datenschutz.html">Datenschutz</a></li>
-            <li><a href="impressum.html">Impressum</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <div class="container">
+function AboutUs() {
+  return (
+    <div className="container">
+      <Helmet>
+        <title>Über Uns - SV Dettingen/Erms Jugend</title>
+        <meta name="description" content="Lerne unsere Jugendabteilung, unsere Philosophie und unsere Trainer kennen." />
+      </Helmet>
       <h1>Wer wir sind – Die Schachjugend des SV Dettingen/Erms</h1>
       <section id="philosophy">
         <h2>Unsere Philosophie: Schach macht Spaß!</h2>
@@ -51,15 +15,13 @@
           Jugendschachs. Wir möchten Kindern und Jugendlichen nicht nur das
           Schachspiel beibringen, sondern auch wichtige Werte wie
           <a href="https://www.deutsche-schachjugend.de/fileadmin/dsj_image/wir/FAIRPLAY/FAIRPLAY-Kodex_WERTE-des-SchachSPORTS_DSJ.pdf"
-            target="
-            _blank" rel="noopener noreferrer">Fairness, Respekt und Teamgeist</a> vermitteln.
+            target="_blank" rel="noopener noreferrer"> Fairness, Respekt und Teamgeist</a> vermitteln.
         </p>
         <p>
           Unser Ziel ist es, eine positive und unterstützende Umgebung zu
           schaffen, in der junge Talente wachsen und ihre Leidenschaft für
           Schach entdecken können. Schach fördert die
-          <strong>Konzentration, das strategische Denken und die
-            Kreativität</strong>
+          <strong> Konzentration, das strategische Denken und die Kreativität</strong>
           – Fähigkeiten, die auch abseits des Bretts von großem Nutzen sind.
         </p>
         <p>
@@ -82,7 +44,7 @@
           Wir bieten eine lebendige Vereinsgemeinschaft, in der Generationen
           zusammenkommen und die Faszination für das königliche Spiel teilen.
           Erfahre mehr über den
-          <a href="https://svdettingen.schachvereine.de/" target="_blank" rel="noopener noreferrer">Gesamtverein</a>
+          <a href="https://svdettingen.schachvereine.de/" target="_blank" rel="noopener noreferrer"> Gesamtverein</a>
           oder besuche uns, um Teil unserer Schachfamilie zu werden.
         </p>
       </section>
@@ -104,16 +66,7 @@
         </ul>
       </section>
     </div>
-  </main>
+  );
+}
 
-  <footer>
-    <div class="container">
-      <p>
-        © <span id="currentYear"></span> Schachclub SV Dettingen/Erms Jugend
-      </p>
-    </div>
-  </footer>
-  <script src="assets/script.js" defer></script>
-</body>
-
-</html>
+export default AboutUs;

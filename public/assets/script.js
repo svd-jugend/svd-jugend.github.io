@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Beispiel: Eine Klasse hinzufügen, um eine CSS-Animation auszulösen
             ctaSection.classList.remove('fade-in'); // Entfernen, um erneute Animation zu ermöglichen
             void ctaSection.offsetWidth; // Wichtig: Reflow erzwingen
-            ctaSection.classList.add('fade-in'); 
+            ctaSection.classList.add('fade-in');
 
             // Oder eine komplexere JS-Animation
             console.log("Button geklickt, Animation gestartet!");

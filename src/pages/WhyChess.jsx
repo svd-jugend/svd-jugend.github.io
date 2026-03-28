@@ -1,49 +1,12 @@
-<!DOCTYPE html>
-<html lang="de">
+import { Helmet } from 'react-helmet-async';
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Warum Schach? - SV Dettingen/Erms Jugend</title>
-  <meta name="description"
-    content="Entdecke die vielen Vorteile des Schachspiels für Kinder und Jugendliche beim SV Dettingen/Erms e.V." />
-  <link rel="stylesheet" href="assets/styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
-    rel="stylesheet" />
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-</head>
-
-<body>
-  <header class="site-header-custom">
-    <div class="container header-custom-content">
-      <div class="logo-container-custom">
-        <img src="assets/logo.png" alt="Schachclub Dettingen/Erms Logo" class="logo-custom" />
-      </div>
-      <div class="header-main-content-custom">
-        <div class="welcome-text-block-custom">
-          <h1>Willkommen bei der Jugendabteilung</h1>
-          <p class="subtitle-custom">des SV Dettingen/Erms e.V.</p>
-        </div>
-        <nav class="navigation-custom">
-          <ul>
-            <li><a href="index.html">Startseite</a></li>
-            <li><a href="training.html">Training</a></li>
-            <li><a href="ueber_uns.html">Über Uns</a></li>
-            <li><a href="warumschach.html" class="active">Warum Schach?</a></li>
-            <li><a href="kontakt.html">Kontakt</a></li>
-            <li><a href="datenschutz.html">Datenschutz</a></li>
-            <li><a href="impressum.html">Impressum</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </header>
-
-  <main>
-
-    <div class="container">
+function WhyChess() {
+  return (
+    <div className="container">
+      <Helmet>
+        <title>Warum Schach? - SV Dettingen/Erms Jugend</title>
+        <meta name="description" content="Erfahre, warum Schach mehr als nur ein Spiel ist und welche Vorteile es für Kinder und Jugendliche bietet." />
+      </Helmet>
       <h1>Warum Schach? Die Vorteile des königlichen Spiels</h1>
       <section id="schach-erklaerung">
         <h2>Mehr als nur ein Spiel</h2>
@@ -54,14 +17,10 @@
         </p>
       </section>
 
-
       <section id="schach-intro-bild">
         <h2>Auf einen Blick:</h2>
-        <img src="assets/SchachInfografik.png" alt="Kinder spielen konzentriert Schach" class="content-image" />
-
+        <img src="/assets/SchachInfografik.png" alt="Kinder spielen konzentriert Schach" className="content-image" />
       </section>
-
-
 
       <section id="kognitive-faehigkeiten">
         <h2>Schärfen der kognitiven Fähigkeiten</h2>
@@ -116,30 +75,19 @@
         </ul>
       </section>
 
-      <!-- Die Sektion #broschuere-download wird durch CSS-Regeln zentriert und gestaltet -->
       <section id="broschuere-download">
         <h2>Weitere Informationen</h2>
         <p>
           Hier eine Veröffentlichung des Deutschen Schachbundes, die die Vorteile von Schach für Kinder und Jugendliche
           zusammenfasst.
         </p>
-        <a href="assets/downloads/SchachMachtSchlau.pdf" target="_blank" rel="noopener noreferrer"
-          class="btn btn-primary" download="Warum_Schach_SV_Dettingen.pdf">
+        <a href="/assets/downloads/SchachMachtSchlau.pdf" target="_blank" rel="noopener noreferrer"
+          className="btn btn-primary" download="Warum_Schach_SV_Dettingen.pdf">
           Vorteile durch Schach (PDF-Download)
         </a>
       </section>
     </div>
-  </main>
+  );
+}
 
-  <footer>
-    <div class="container">
-      <p>
-        © <span id="currentYear"></span> Schachclub SV Dettingen/Erms
-        Jugend
-      </p>
-    </div>
-  </footer>
-  <script src="assets/script.js" defer></script>
-</body>
-
-</html>
+export default WhyChess;
